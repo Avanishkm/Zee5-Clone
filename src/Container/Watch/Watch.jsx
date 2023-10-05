@@ -4,7 +4,7 @@ import { Container, Flex, Button } from "@chakra-ui/react";
 import { useParams } from "react-router";
 import Footer from "../../Components/Footer/Footer";
 import ShortFilm from "../ShortFilm/ShortFilm";
-import {MdPlaylistAdd, MdPlaylistAddCheck} from 'react-icons/md';
+import { MdPlaylistAdd, MdPlaylistAddCheck } from "react-icons/md";
 import VideoSong from "../VideoSong/VideoSong";
 
 const Watch = () => {
@@ -43,7 +43,7 @@ const Watch = () => {
   }, [id]);
 
   async function addRemoveWatchList(showId) {
-    console.log(addRemoveWatchList, "addRemoveWatchList")
+    console.log(addRemoveWatchList, "addRemoveWatchList");
     const user = localStorage.getItem("signup");
     if (user) {
       const parsedData = JSON.parse(user);
@@ -126,8 +126,10 @@ const Watch = () => {
               border: "2px solid #8230c6",
             },
           }}
-          onClick={() => {console.log(addRemoveWatchList, "addRemoveWatchList"), addRemoveWatchList(itemId?._id)}}
-          
+          onClick={() => {
+            console.log(addRemoveWatchList, "addRemoveWatchList");
+            addRemoveWatchList(itemId?._id);
+          }}
         >
           {!isAdded ? (
             <MdPlaylistAdd
@@ -178,7 +180,7 @@ const Watch = () => {
         </p>
         <p style={{ color: "white" }}>{itemId.director}</p>
       </Flex>
-      <ShortFilm/>
+      <ShortFilm />
       <Footer />
     </>
   );
