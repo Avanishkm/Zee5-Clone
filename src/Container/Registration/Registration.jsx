@@ -1,16 +1,10 @@
+import React from "react";
 import { Container, Button, Input } from "@chakra-ui/react";
 import { Link, NavLink } from "react-router-dom";
 import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-const Registration = ({
-  
-  setLoggedInStatus,
-  setUserName,
-  setEMail,
-}) => {
-  
-
+const Registration = ({ setLoggedInStatus, setUserName, setEMail }) => {
   const [error, setError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -42,6 +36,13 @@ const Registration = ({
     } else {
       try {
         (async function () {
+          var raw = JSON.stringify({
+            name: `${username}`,
+            email: `${email}`,
+            password: `${password}`,
+            appType: "ott",
+          });
+          console.log(raw);
           const response = await fetch(
             "https://academics.newtonschool.co/api/v1/user/signup",
             {
@@ -50,15 +51,12 @@ const Registration = ({
                 "Content-Type": "application/json", // Set content type to JSON
                 projectId: "f104bi07c490",
               },
-              body: JSON.stringify({
-                name: `${username}`,
-                email: `${email}`,
-                password: `${password}`,
-                appType: "ott",
-              }),
+
+              body: raw,
+              redirect: "follow",
             }
           );
-          if (response.ok) {
+          if (!response.ok) {
             const responseData = await response.json();
             localStorage.setItem(
               `signup`,
@@ -73,8 +71,8 @@ const Registration = ({
             setEMail(email);
             setLoggedInStatus(true);
           } else {
-            console.error("Registration Failed", response);
-            setError(response || "Incorrect Email or password");
+            console.log("Registration Failed", response);
+            setError("Incorrect Email or password");
             setColor("red");
           }
         })();
@@ -238,10 +236,10 @@ const Registration = ({
                 marginBottom: "15px",
               }}
             >
-              Already registered?{" "}
+              Already registered?
               <Link to="/Login" style={{ textDecoration: "none" }}>
                 <span style={{ color: "plum" }}>Login</span>
-              </Link>{" "}
+              </Link>
             </div>
           </>
         )}

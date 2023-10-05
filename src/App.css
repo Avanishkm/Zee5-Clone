@@ -77,7 +77,7 @@ body{
 }
 .cardStyle:hover{
   background-color: #1f0239;
-  
+  ;
   /* border: "2px solid rgb(58, 11, 58)"; */
   border-radius: 5px;
 }
@@ -89,9 +89,9 @@ body{
   height: 30px;
 }
 .largerCarousel {
-  padding-left: 50px;
+  padding-left: 80px;
   padding-top: 10px;
-  padding-right: 50px;
+  padding-right: 80px;
 }
 .largerCarousel .large-slider-img {
   width: 100%;
@@ -100,18 +100,6 @@ body{
 }
 
 .watchButton{
-  /* position: absolute; 
-  margin-top:27%;
-  left:0; 
-  margin-left:40px; 
-  width: 9.5%; 
-  height:11%;
-  background-color:#0F0617;
-  color:white;
-  border:1px solid white; 
-  border-radius:5px;
-  cursor: pointer; */
-
   position: 'absolute';
   top: '50%';
   left:"20%";
@@ -123,22 +111,9 @@ body{
   border:1px solid white; 
   border-radius:5px;
   cursor: pointer;
+
 }
-/* .buyPlanbutton{
-  position: absolute;
-  margin-top: 27%;
-  padding-bottom:10px;
-  left:0;
-  margin-left:160px;
-  width: 13%;
-  height: 11%;
-  background-color: #8230c6;
-  color: white;
-  border: 1px solid #8230c6;
-  border-radius: 5px;
-  font-weight:Bold;
-  cursor: pointer;
-} */
+
 .container{
   display: flex;
   flex-direction: row;
@@ -149,19 +124,12 @@ body{
 width : 200px;
 box-shadow: 0 0 20px 2px rgba(0,0, 0.1);
 transition: 0.2s;
-height: 300px;
-margin-top: 50px;
+height: 100px;
+margin-top: 10px;
 
 }
 
 .dataImage{
- /* width: 15rem;
- height: 18rem;
- margin-left: 20px;
- border-radius: 8px;
- transition: transform 0.2s, z-index 0.2s;
- position: relative;
- z-index: 1; */
 width: 15rem;
 height: 18rem;
 display: block;
@@ -239,10 +207,13 @@ border-radius: 2px;
 font-size : 22px;
 margin-left: 10px; 
 width: 50px;
+cursor: pointer;
 }
 .AppsIcon:hover{
 color: purple;
 }
+
+
 
 .watch-button:hover{
   background-color: #8230c6;
@@ -389,17 +360,17 @@ border-radius: 10px;
 }
 
 .menu{
-  cursor: pointer;
-  margin-top: 4rem;
-  margin-left: 17rem;
-  position: absolute;
-  background-color:#0F0617;
-  max-height: 26rem;
-  width: 330px;
-  overflow-y: scroll;
-  scrollbar-width: thin;
-  scrollbar-color:  grey rgb(42, 41, 41);
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0.5);
+cursor: pointer;
+margin-top: 4rem;
+margin-left: 15rem;
+position: absolute;
+background-color:#0F0617;
+max-height: 26rem;
+width: 330px;
+overflow-y: scroll;
+scrollbar-width: thin;
+scrollbar-color:  grey rgb(42, 41, 41);
+box-shadow: 0 2px 4px 0 rgba(0, 0, 0.5);
 }
 
 .menu::-webkit-scrollbar {
@@ -412,41 +383,39 @@ border-radius: 5px;
 }
 
 .BuyPlanButton{
-  margin-left: 10px;
-  background-color: #4B0082;
-  color: white;
-  border: 1px solid #4B0082;
-  border-radius:"10px"; 
-  width:110px;
-  height:30px;
+margin-left: 10px;
+background-color: #4B0082;
+color: white;
+border: 1px solid #4B0082;
+border-radius:"10px"; 
+width:110px;
+height:30px;
+margin-top: 20px;
+}
+.navButton{
+  margin-left: 24px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  font-size: 15px;
   margin-top: 20px;
-  }
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.navButton:hover{
+  color: #8235b9;
+}
 
-  .navButton{
-    margin-left: 24px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-size: 15px;
-    margin-top: 20px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+.searchButton{
+  margin-right: 30px;
+  background-color: #0F0617;
+  margin-top: 20px;
+  padding-left: 80px;
+}
 
-  .navButton:hover{
-    color: #8235b9;
-  }
-
-  .searchButton{
-    margin-right: 30px;
-    background-color: #0F0617;
-    margin-top: 20px;
-    padding-left: 80px;
-  }
-
-  .navButtonSmaller{
-    margin-right: 5px;
-    margin-top: 10px;
-    font-size: 15px;
-    margin-left: 15px;
-  }
+.navButtonSmaller{
+  margin-right: 5px;
+  margin-top: 10px;
+  font-size: 15px;
+  margin-left: 15px;
+}

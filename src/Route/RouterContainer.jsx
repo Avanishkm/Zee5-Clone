@@ -79,7 +79,7 @@ const RouterContainer = () => {
           {/* protected routes */}
           
           <Route path="/Login" element={<Login handleNotShown={handleNotShown} setLoggedInStatus={setLoggedInStatus} setUserName={setUserName} setEMail={setEMail}/>} />
-          <Route path="/Register" element={<Registration handleNotShown={handleNotShown} setLoggedInStatus={setLoggedInStatus} setUserName={setUserName}/>} setEMail={setEMail} />
+          <Route path="/Register" element={<Registration handleNotShown={handleNotShown} setLoggedInStatus={setLoggedInStatus} setEMail={setEMail} setUserName={setUserName}/> } />
           <Route path="/BuyPlan" element={<BuyPlan handleNotShown={handleNotShown}/>} /> 
         </Routes>
       </Router>
