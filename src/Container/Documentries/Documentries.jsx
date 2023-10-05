@@ -1,6 +1,4 @@
-import { Box, Container, Flex, Button, border } from '@chakra-ui/react'
-import { SmallAddIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
+import { Box, Container, Flex } from '@chakra-ui/react'
 import ComponentCard from '../ComponentCard/ComponentCard'
 import { useState, useEffect } from 'react'
 import Footer from "../../Components/Footer/Footer";

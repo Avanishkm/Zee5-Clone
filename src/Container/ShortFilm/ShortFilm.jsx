@@ -1,35 +1,85 @@
-import { Box, Container, Flex, Button, border } from "@chakra-ui/react";
-import { SmallAddIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
-import {useEffect, useState} from 'react';
+import { Box, Container, Flex } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
 import React from "react";
 import ComponentCard from "../ComponentCard/ComponentCard";
 import Footer from "../../Components/Footer/Footer";
 
-const ShortFilm = ({ handleShown }) => {
-  handleShown();
+const ShortFilm = () => {
   const [shortFilmList, setshortFilmList] = useState([]);
-  const [romantic, setRomantic] = useState([]);
-  const [action, setAction] = useState([]);
-  const [horror, setHorror] = useState([]);
-  const [comedy, setComedy] = useState([]);
+  // const [romantic, setRomantic] = useState([]);
+  // const [action, setAction] = useState([]);
+  // const [horror, setHorror] = useState([]);
+  // const [comedy, setComedy] = useState([]);
 
-  const [hoveredStates, setHoveredStates] = useState({
-    exclusive: [],
-    romantic: [],
-    action: [],
-    horror: [],
-    comedy: [],
-  });
+  // const [hoveredStates, setHoveredStates] = useState({
+  //   exclusive: [],
+  //   romantic: [],
+  //   action: [],
+  //   horror: [],
+  //   comedy: [],
+  // });
 
-  const handleHover = (rowName, index, isHovered) => {
-    // Clone the current state object
-    const updatedHoveredStates = { ...hoveredStates };
-    // Update the hover state for the specified row and index
-    updatedHoveredStates[rowName][index] = isHovered;
-    // Set the updated state object
-    setHoveredStates(updatedHoveredStates);
-  };
+  // const handleHover = (rowName, index, isHovered) => {
+  //   // Clone the current state object
+  //   const updatedHoveredStates = { ...hoveredStates };
+  //   // Update the hover state for the specified row and index
+  //   updatedHoveredStates[rowName][index] = isHovered;
+  //   // Set the updated state object
+  //   setHoveredStates(updatedHoveredStates);
+  // };
+
+  // const getMovies = async () => {
+  //   try {
+  //     const storedData = localStorage.getItem("videoData");
+
+  //     if (storedData) {
+  //       const getData = JSON.parse(storedData);
+  //       const parseData = getData.videoData;
+  //       console.log(parseData);
+
+  //       const shortFilmData = parseData.filter(
+  //         (item) => item.type === "short film"
+  //       );
+  //       const romanticData = parseData.filter(
+  //         (item) =>
+  //           (item.type === "short film" || item.type === "trailer") &&
+  //           (item.keywords.includes("romance") ||
+  //             item.keywords.includes("fantasy") ||
+  //             item.keywords.includes("love"))
+  //       );
+  //       // console.log(romanticData);
+  //       const actionData = parseData.filter(
+  //         (item) =>
+  //           (item.type === "short film" || item.type === "trailer") &&
+  //           (item.keywords.includes("action") ||
+  //             item.keywords.includes("thriller"))
+  //       );
+  //       // console.log(actionData);
+  //       const horrorData = parseData.filter(
+  //         (item) =>
+  //           (item.type === "short film" || item.type === "trailer") &&
+  //           (item.keywords.includes("darkness") ||
+  //             item.keywords.includes("sci-fi"))
+  //       );
+  //       // console.log(horrorData);
+  //       const comedyData = parseData.filter(
+  //         (item) =>
+  //           (item.type === "short film" || item.type === "trailer") &&
+  //           (item.keywords.includes("drama") ||
+  //             item.keywords.includes("comedy"))
+  //       );
+  //       // console.log(comedyData);
+
+  //       setshortFilmList(shortFilmData);
+  //       setRomantic(romanticData);
+  //       setAction(actionData);
+  //       setHorror(horrorData);
+  //       setComedy(comedyData);
+  //     }
+  //   } catch (error) {
+  //     console.error("error");
+  //   }
+  // };
 
   const getMovies = async () => {
     try {
@@ -43,47 +93,16 @@ const ShortFilm = ({ handleShown }) => {
         const shortFilmData = parseData.filter(
           (item) => item.type === "short film"
         );
-        const romanticData = parseData.filter(
-          (item) =>
-            (item.type === "short film" || item.type === "trailer") &&
-            (item.keywords.includes("romance") ||
-              item.keywords.includes("fantasy") ||
-              item.keywords.includes("love"))
-        );
-        // console.log(romanticData);
-        const actionData = parseData.filter(
-          (item) =>
-            (item.type === "short film" || item.type === "trailer") &&
-            (item.keywords.includes("action") ||
-              item.keywords.includes("thriller"))
-        );
-        // console.log(actionData);
-        const horrorData = parseData.filter(
-          (item) =>
-            (item.type === "short film" || item.type === "trailer") &&
-            (item.keywords.includes("darkness") ||
-              item.keywords.includes("sci-fi"))
-        );
-        // console.log(horrorData);
-        const comedyData = parseData.filter(
-          (item) =>
-            (item.type === "short film" || item.type === "trailer") &&
-            (item.keywords.includes("drama") ||
-              item.keywords.includes("comedy"))
-        );
-        // console.log(comedyData);
 
         setshortFilmList(shortFilmData);
-        setRomantic(romanticData);
-        setAction(actionData);
-        setHorror(horrorData);
-        setComedy(comedyData);
       }
     } catch (error) {
       console.error("error");
     }
   };
-
+  useEffect(() => {
+    getMovies();
+  }, []);
   useEffect(() => {
     getMovies();
   }, []);
@@ -96,7 +115,30 @@ const ShortFilm = ({ handleShown }) => {
 
   return (
     <>
-      <Container style={{ marginTop: "8rem" }}>
+      <Container style={{ marginTop: "4rem" }}>
+        <Container style={{ marginLeft: "40px" }}>
+          <Box
+            as="p"
+            sx={{
+              fontSize: "25px",
+              color: "white",
+              fontFamily: "Arial",
+              marginLeft: "20px",
+              letterSpacing: "1px",
+              marginBottom: "20px",
+              fontWeight: "bold",
+            }}
+          >
+            Movies & Shows You May Also Like
+          </Box>
+          <Flex sx={{ flexWrap: "wrap" }}>
+            {shortFilmList.map((exclusive, index) => (
+              <ComponentCard key={exclusive._id} item={exclusive} />
+            ))}
+          </Flex>
+        </Container>
+      </Container>
+      {/* <Container style={{ marginTop: "8rem" }}>
         <Container style={{ marginLeft: "40px" }}>
           <Box
             as="p"
@@ -263,7 +305,7 @@ const ShortFilm = ({ handleShown }) => {
             ))}
           </Flex>
         </Container>
-      </Container>
+      </Container> */}
       <Footer />
     </>
   );

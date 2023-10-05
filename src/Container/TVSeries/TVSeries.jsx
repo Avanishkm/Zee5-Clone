@@ -1,10 +1,10 @@
-import { Box, Container, Flex, Button, border } from "@chakra-ui/react";
+import { Box, Container, Flex } from "@chakra-ui/react";
 import {
   ChevronRightIcon,
   ChevronLeftIcon,
   SmallAddIcon,
 } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+
 import ComponentCard from "../ComponentCard/ComponentCard";
 import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
@@ -12,6 +12,7 @@ import { useEffect } from "react";
 
 const TVSeries = ({ handleShown }) => {
   handleShown();
+  const[smallerScreen, setSmallerScreen] = useState(window.innerWidth<500)
   const [tvShowList, settvShowList] = useState([]);
   const [romantic, setRomantic] = useState([]);
   const [action, setAction] = useState([]);

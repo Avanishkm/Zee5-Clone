@@ -1,11 +1,10 @@
-import { Container, Box, Flex, Button } from "@chakra-ui/react";
-import { AddIcon, SmallAddIcon } from "@chakra-ui/icons";
+import { Container, Box, Flex } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { Link, json } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ComponentCard from "../ComponentCard/ComponentCard";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import Footer from "../../Components/Footer/Footer";
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 export default function Home({ handleShown }) {
   handleShown();
@@ -19,25 +18,6 @@ export default function Home({ handleShown }) {
   const [documentries, setDocumentries] = useState([]);
 
   const [smallerScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
-
-  // const [hoveredStates, setHoveredStates] = useState({
-  //   exclusive: [],
-  //   movie: [],
-  //   tv: [],
-  //   video: [],
-  //   trailer: [],
-  //   webSeries: [],
-  //   documentry: [],
-  // });
-
-  // const handleHover = (rowName, index, isHovered) => {
-  //   // Clone the current state object
-  //   const updatedHoveredStates = { ...hoveredStates };
-  //   // Update the hover state for the specified row and index
-  //   updatedHoveredStates[rowName][index] = isHovered;
-  //   // Set the updated state object
-  //   setHoveredStates(updatedHoveredStates);
-  // };
 
   const getMovies = async () => {
     try {
@@ -141,29 +121,35 @@ export default function Home({ handleShown }) {
               <ImageSlider />
             </Container>
             <Container style={{ marginTop: "40px", marginLeft: "10px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "20px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  letterSpacing: "1px",
-                  marginBottom: "0",
-                }}
-              >
-                ZEE5 Exclusives
-              </Box>
-              <Link
-                to="/ZeeExclusive"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    letterSpacing: "1px",
+                    marginBottom: "0",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  ZEE5 Exclusives
                 </Box>
-              </Link>
+                <Link
+                  to="/ZeeExclusive"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   marginLeft: "20px",
@@ -184,29 +170,35 @@ export default function Home({ handleShown }) {
             </Container>
 
             <Container style={{ marginTop: "20px", marginLeft: "40px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "20px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  letterSpacing: "1px",
-                  marginBottom: "0",
-                }}
-              >
-                Top Hollywood Movies
-              </Box>
-              <Link
-                to="/AllMovies"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    letterSpacing: "1px",
+                    marginBottom: "0",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  Top Hollywood Movies
                 </Box>
-              </Link>
+                <Link
+                  to="/AllMovies"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   overflowX: "scroll",
@@ -226,29 +218,35 @@ export default function Home({ handleShown }) {
             </Container>
 
             <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "20px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  letterSpacing: "1px",
-                  marginBottom: "0",
-                }}
-              >
-                Unmissable shows
-              </Box>
-              <Link
-                to="/AllShows"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    letterSpacing: "1px",
+                    marginBottom: "0",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  Unmissable shows
                 </Box>
-              </Link>
+                <Link
+                  to="/AllShows"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   overflowX: "scroll",
@@ -268,29 +266,35 @@ export default function Home({ handleShown }) {
             </Container>
 
             <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "20px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  letterSpacing: "1px",
-                  marginBottom: "0",
-                }}
-              >
-                World Hits | Free Dubbed Movies
-              </Box>
-              <Link
-                to="/AllTrailer"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    letterSpacing: "1px",
+                    marginBottom: "0",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  World Hits | Free Dubbed Movies
                 </Box>
-              </Link>
+                <Link
+                  to="/AllTrailer"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   overflowX: "scroll",
@@ -310,29 +314,35 @@ export default function Home({ handleShown }) {
             </Container>
 
             <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "20px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  letterSpacing: "1px",
-                  marginBottom: "0",
-                }}
-              >
-                Cross Border Drama Shows
-              </Box>
-              <Link
-                to="/AllDrama"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "20px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    letterSpacing: "1px",
+                    marginBottom: "0",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  Cross Border Drama Shows
                 </Box>
-              </Link>
+                <Link
+                  to="/AllDrama"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   overflowX: "scroll",
@@ -350,31 +360,36 @@ export default function Home({ handleShown }) {
                 ))}
               </Flex>
             </Container>
-
             <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "25px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  letterSpacing: "1px",
-                  marginBottom: "0",
-                }}
-              >
-                Inspired From Real Life
-              </Box>
-              <Link
-                to="/AllDocumentries"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "25px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    letterSpacing: "1px",
+                    marginBottom: "0",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  Inspired From Real Life
                 </Box>
-              </Link>
+                <Link
+                  to="/AllDocumentries"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   overflowX: "scroll",
@@ -394,29 +409,35 @@ export default function Home({ handleShown }) {
             </Container>
 
             <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
-              <Box
-                as="p"
-                sx={{
-                  fontSize: "25px",
-                  color: "white",
-                  fontFamily: "Arial",
-                  marginLeft: "20px",
-                  marginBottom: "0",
-                  letterSpacing: "1px",
-                }}
-              >
-                Web Series
-              </Box>
-              <Link
-                to="/AllWebSeries"
-                style={{ textDecoration: "none", color: "#a785ff" }}
-              >
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
-                  style={{ color: "#a785ff", marginLeft: "93%", padding: "0" }}
+                  as="p"
+                  sx={{
+                    fontSize: "25px",
+                    color: "white",
+                    fontFamily: "Arial",
+                    marginLeft: "20px",
+                    marginBottom: "0",
+                    letterSpacing: "1px",
+                  }}
                 >
-                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  Web Series
                 </Box>
-              </Link>
+                <Link
+                  to="/AllWebSeries"
+                  style={{ textDecoration: "none", color: "#a785ff" }}
+                >
+                  <Box
+                    style={{
+                      color: "#a785ff",
+                      paddingTop: "15px",
+                      paddingRight: "10px",
+                    }}
+                  >
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                  </Box>
+                </Link>
+              </Flex>
               <Flex
                 sx={{
                   overflowX: "scroll",

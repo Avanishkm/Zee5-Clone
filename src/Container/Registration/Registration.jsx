@@ -1,11 +1,15 @@
 import { Container, Button, Input } from "@chakra-ui/react";
-import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CloseIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
-const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
-  handleNotShown();
+const Registration = ({
+  
+  setLoggedInStatus,
+  setUserName,
+  setEMail,
+}) => {
+  
 
   const [error, setError] = useState("");
   const [username, setUsername] = useState("");
@@ -17,6 +21,7 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
   const handleusername = (event) => {
     setUsername(event.target.value);
   };
+
   const handlePassword = (event) => {
     setPassword(event.target.value);
   };
@@ -65,6 +70,7 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
             setColor("green");
             setSign(true);
             setUserName(username);
+            setEMail(email);
             setLoggedInStatus(true);
           } else {
             console.error("Registration Failed", response);
@@ -79,6 +85,7 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
       }
     }
   };
+
   return (
     <Container
       sx={{
@@ -107,6 +114,7 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
           {" "}
           Create a new account{" "}
         </h2>
+
         <h4 style={{ color: "#363636", marginLeft: "8%", marginRight: "5%" }}>
           Create an account to continue enjoying uninterrupted video and
           personalised experience
@@ -158,7 +166,6 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
           onChange={handlePassword}
         />
         <br />
-
         <div
           style={{ color: color, marginLeft: "8%", marginTop: "2%" }}
           className="error"
@@ -194,6 +201,7 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
             <label style={{ fontSize: "10px" }}>
               By proceeding you agree to our Terms of services & privacy policy
             </label>
+
             <Button
               type="button"
               style={{
@@ -221,6 +229,7 @@ const Registration = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
               Create Account
             </Button>
             <br />
+
             <div
               style={{
                 marginLeft: "25%",

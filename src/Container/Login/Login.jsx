@@ -42,16 +42,16 @@ const Login = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
                 projectId: "f104bi07c490",
               },
               body: JSON.stringify({
-                email: `${email}`,
-                password: `${password}`,
-                appType: "ott",
+                "email": `${email}`,
+                "password": `${password}`,
+                "appType": "ott",
               }),
             }
           );
           const data = await response.json();
           if (response.ok && data.status === "success") {
             console.log("registration successfully");
-            setError("Registration successfully");
+            setError("Login successfully");
             setColor("green");
             setLogin(true);
             setUserName(email);

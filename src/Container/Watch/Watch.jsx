@@ -1,16 +1,21 @@
-
 import React, { useEffect, useState, useRef } from "react";
 import { Container, Flex, Button } from "@chakra-ui/react";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
-import { useParams } from "react-router";
 
-const Watch = (addRemoveWatchList) => {
+import { useParams } from "react-router";
+import Footer from "../../Components/Footer/Footer";
+import ShortFilm from "../ShortFilm/ShortFilm";
+import {MdPlaylistAdd, MdPlaylistAddCheck} from 'react-icons/md';
+import VideoSong from "../VideoSong/VideoSong";
+
+const Watch = () => {
   const [itemId, setShowItemId] = useState([]);
+  const [isAdded, setIsAdded] = useState(false);
+
   const videoRef = useRef(null);
   console.log(videoRef);
+
   const { id } = useParams();
   console.log(id, "id data");
-  
 
   const getMovies = async () => {
     const response = await fetch(
@@ -35,14 +40,60 @@ const Watch = (addRemoveWatchList) => {
 
   useEffect(() => {
     getMovies();
-  }, []);
+  }, [id]);
+
+  async function addRemoveWatchList(showId) {
+    console.log(addRemoveWatchList, "addRemoveWatchList")
+    const user = localStorage.getItem("signup");
+    if (user) {
+      const parsedData = JSON.parse(user);
+      const isShowInWatchlist = parsedData?.watchlist?.some(
+        (item) => item.showId === showId
+      );
+      const response = await fetch(
+        `https://academics.newtonschool.co/api/v1/ott/watchlist/like`,
+        {
+          method: "PATCH",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${parsedData.sign.token}`,
+            projectId: "f104bi07c490",
+          },
+          body: JSON.stringify({ showId: showId }),
+        }
+      );
+      //       if (response.ok) {
+      // If the show was added successfully or removed, update the local storage
+      if (isShowInWatchlist) {
+        // If the show was in the watchlist, remove it
+        parsedData.watchlist = parsedData.watchlist.filter(
+          (item) => item.showId !== showId
+        );
+      } else {
+        // If the show was not in the watchlist, add it
+        parsedData?.watchlist?.push({ showId: showId });
+      }
+      localStorage.setItem("signup", JSON.stringify(parsedData));
+
+      // Toggle the isAdded state
+      setIsAdded((prevState) => !prevState);
+    } else {
+      console.error("Failed to add/remove show from the watchlist.");
+    }
+  }
 
   return (
-    <d>
+    <>
       {itemId.video_url ? (
-        <video ref={videoRef} width="70%" height="auto" controls>
-          <source src={itemId.video_url} type="video/mp4" />
-        </video>
+        <Flex marginTop="5rem">
+          <video ref={videoRef} width="65%" height="100%" controls>
+            <source src={itemId.video_url} type="video/mp4" />
+          </video>
+          <Container style={{ height: "20px", top: "0" }}>
+            <VideoSong />
+          </Container>
+        </Flex>
       ) : (
         <p>Loading...</p>
       )}
@@ -58,17 +109,37 @@ const Watch = (addRemoveWatchList) => {
           </Flex>
         </ul>
 
-        {/* <Button sx={{width:"100px", 
-        height:"40px", 
-        color:"white", 
-        display:"flex",
-        background:"#0F0617", 
-        marginTop:"0", 
-        border:"2px solid white", 
-        borderRadius:"8px", 
-        marginLeft:"50px" }}  onClick={()=>addRemoveWatchList(itemId._id)}>
-        <img src="https://cdn-icons-png.flaticon.com/512/2543/2543240.png" alt="image" style={{color:"white", width:"20px", height:"20px"}}/>
-        Watchlist</Button> */}
+        <Button
+          sx={{
+            width: "150px",
+            height: "100px",
+            color: "white",
+            display: "flex",
+            backgroundColor: "rgba(41, 37, 45, 0.6)",
+            marginTop: "0",
+            border: "none",
+            fontSize: "20px",
+            borderRadius: "8px",
+            marginLeft: "50px",
+            ":hover": {
+              backgroundColor: "#8230c6",
+              border: "2px solid #8230c6",
+            },
+          }}
+          onClick={() => {console.log(addRemoveWatchList, "addRemoveWatchList"), addRemoveWatchList(itemId?._id)}}
+          
+        >
+          {!isAdded ? (
+            <MdPlaylistAdd
+              style={{ color: "white", width: "20px", height: "20px" }}
+            />
+          ) : (
+            <MdPlaylistAddCheck
+              style={{ color: "white", width: "20px", height: "20px" }}
+            />
+          )}
+          Watchlist
+        </Button>
 
         {/* new added */}
         <Flex>
@@ -84,10 +155,7 @@ const Watch = (addRemoveWatchList) => {
               : "N/A"}
           </p>
         </Flex>
-        <Flex>
-          {/* <Button sx={{width:"30", height:"50", color:"white", background:"purple", border:"1px solid purple", borderRadius:"5px", marginLeft:"20px" }}>
-    Continue Watching <ArrowRightIcon style={{fontSize:"25"}}/></Button> */}
-        </Flex>
+        <Flex></Flex>
       </Container>
       <Container>
         <div style={{ color: "white", fontSize: "15px", marginLeft: "50px" }}>
@@ -110,8 +178,12 @@ const Watch = (addRemoveWatchList) => {
         </p>
         <p style={{ color: "white" }}>{itemId.director}</p>
       </Flex>
-    </d>
+      <ShortFilm/>
+      <Footer />
+    </>
   );
 };
 
 export default Watch;
+
+// f104bi07c490
