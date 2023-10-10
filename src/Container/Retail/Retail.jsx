@@ -25,4 +25,4 @@ const Retail = () => {
   )
 }
 
-export default Retail
+export default Retail;

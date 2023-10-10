@@ -6,8 +6,8 @@ import ImageSlider from "../ImageSlider/ImageSlider";
 import Footer from "../../Components/Footer/Footer";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-export default function Home({ handleShown }) {
-  handleShown();
+export default function Home() {
+  
 
   const [exclusiveList, setExclusivesList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
@@ -17,7 +17,7 @@ export default function Home({ handleShown }) {
   const [webSeries, setWebSeries] = useState([]);
   const [documentries, setDocumentries] = useState([]);
 
-  const [smallerScreen, setIsSmallScreen] = useState(window.innerWidth < 600);
+  const [smallerScreen, setIsSmallScreen] = useState(window.innerWidth < 500);
 
   const getMovies = async () => {
     try {
@@ -111,9 +111,9 @@ export default function Home({ handleShown }) {
   return (
     <>
       {smallerScreen ? (
-        <>
+        <Container>
           <ImageSlider />
-        </>
+        </Container>
       ) : (
         <>
           <Container>
@@ -162,8 +162,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={exclusive._id}
                     item={exclusive}
-                    // isHovered={hoveredStates.exclusive[index]}
-                    // handleHover={(isHovered) => handleHover("exclusive", index, isHovered)}
+                   
                   />
                 ))}
               </Flex>
@@ -195,7 +194,7 @@ export default function Home({ handleShown }) {
                       paddingRight: "10px",
                     }}
                   >
-                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />
                   </Box>
                 </Link>
               </Flex>
@@ -210,8 +209,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={movie._id}
                     item={movie}
-                    // isHovered={hoveredStates.movie[index]}
-                    // handleHover={(isHovered) => handleHover("movie", index, isHovered)}
+                    
                   />
                 ))}
               </Flex>
@@ -258,8 +256,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={tvShow._id}
                     item={tvShow}
-                    // isHovered={hoveredStates.tv[index]}
-                    // handleHover={(isHovered) => handleHover("tv", index, isHovered)}
+                    
                   />
                 ))}
               </Flex>
@@ -306,8 +303,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={video._id}
                     item={video}
-                    // isHovered={hoveredStates.video[index]}
-                    // handleHover={(isHovered) => handleHover("video", index, isHovered)}
+                    
                   />
                 ))}
               </Flex>
@@ -354,8 +350,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={trailer._id}
                     item={trailer}
-                    // isHovered={hoveredStates.trailer[index]}
-                    // handleHover={(isHovered) => handleHover("trailer", index, isHovered)}
+                    
                   />
                 ))}
               </Flex>
@@ -401,8 +396,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={documentary._id}
                     item={documentary}
-                    // isHovered={hoveredStates.documentry[index]}
-                    // handleHover={(isHovered) => handleHover("documentry", index, isHovered)}
+                    
                   />
                 ))}
               </Flex>
@@ -449,8 +443,7 @@ export default function Home({ handleShown }) {
                   <ComponentCard
                     key={webSeries._id}
                     item={webSeries}
-                    // isHovered={hoveredStates.webSeries[index]}
-                    // handleHover={(isHovered) => handleHover("webSeries", index, isHovered)}
+                    
                   />
                 ))}
               </Flex>

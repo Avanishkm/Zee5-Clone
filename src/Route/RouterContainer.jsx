@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Components/Header/Header";
 import Home from "../Container/Home/Home";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import Movies from "../Container/Movies/Movies";
 import TVSeries from "../Container/TVSeries/TVSeries";
 import Login from "../Container/Login/Login";
@@ -12,8 +12,8 @@ import Watch from "../Container/Watch/Watch";
 import WatchList from "../Container/WatchList/WatchList";
 import SearchCard from "../Container/SearchCard/SearchCard";
 import BuyPlan from "../Container/BuyPlan/BuyPlan";
-import Registration from "../Container/Registration/Registration"
-import ZeeExclusive from "../Container/ZeeExclusive/ZeeExclusive"
+import Registration from "../Container/Registration/Registration";
+import ZeeExclusive from "../Container/ZeeExclusive/ZeeExclusive";
 import AllDocumentries from "../Container/AllDocumentries/AllDocumentries";
 import AllDrama from "../Container/AllDrama/AllDrama";
 import AllMovies from "../Container/ZeeExclusive/ZeeExclusive";
@@ -28,61 +28,99 @@ import Transaction from "../Container/Transaction/Transaction";
 import TermOfUse from "../Container/TermOfUse/TermOfUse";
 
 const RouterContainer = () => {
-  const [showHaed, setShowHead] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [Email, setEMail] = useState("");
- 
 
-  const setLoggedInStatus  = (status) =>{
-    setIsLoggedIn(status)
-  }
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
-  const handleShown = () =>{
-      setShowHead(true)
-  }
+  const setLoggedInStatus = (status) => {
+    setIsLoggedIn(status);
+  };
 
-  const handleNotShown  = () =>{
-    setShowHead(false)
-  }
-
+  const { pathname } = useLocation();
+  const showHead =
+    pathname.includes("Login") ||
+    pathname.includes("Register") ||
+    pathname.includes("BuyPlan");
 
   return (
     <>
-      <Router>
-        {showHaed && <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={userName}/>}
-        <Routes>
-          <Route path="/" element={<Home handleShown={handleShown}/>} />
-          <Route path="/movies" element={<Movies handleShown={handleShown}/>} />
-          <Route path="/TvShows" element={<TVSeries handleShown={handleShown}/>} />
-          <Route path="/Documentary" element={<Documentries handleShown={handleShown}/>} />
-          <Route path="/song" element={<VideoSong handleShown={handleShown}/>} />
-          <Route path="/shortfilm" element={<ShortFilm handleShown={handleShown}/>} />
-          <Route path="/watch/:id" element={<Watch handleShown={handleShown}/>} />
-          <Route path="/WatchList" element={<WatchList handleShown={handleShown}/>} />
-          <Route path="/result/:id" element={<SearchCard />} />
-          <Route path="/ZeeExclusive" element={<ZeeExclusive handleShown={handleShown} />} />
-          <Route path="/AllDocumentries" element={<AllDocumentries handleShown={handleShown} />} />
-          <Route path="/AllDrama" element={<AllDrama handleShown={handleShown} />} />
-          <Route path="/AllMovies" element={<AllMovies handleShown={handleShown} />} />
-          <Route path="/AllShows" element={<AllShows handleShown={handleShown} />} />
-          <Route path="/AllTrailer" element={<AllTrailer handleShown={handleShown} />} />
-          <Route path="/AllWebSeries" element={<AllWebSeries handleShown={handleShown} />} />
-          <Route path="/NoResult" element={<NoResult handleShown={handleShown} />} />
-          <Route path="/Profile" element={<Profile handleShown={handleShown} />} username={userName} email={Email} />
-          <Route path="/Subscription" element={<Subscription handleShown={handleShown} />} />
-          <Route path="/Retail" element={<Retail handleShown={handleShown} />} />
-          <Route path="/Transaction" element={<Transaction handleShown={handleShown} />} />
-          {/* <Route path="/AboutUs" element={<AboutUs handleShown={handleShown} />} /> */}
-          <Route path="/TermOfUse" element={<TermOfUse handleShown={handleShown} />} />
+      {!showHead && (
+        <Header
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          username={userName}
+        />
+      )}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/TvShows" element={<TVSeries />} />
+        <Route path="/Documentary" element={<Documentries />} />
+        <Route path="/song" element={<VideoSong />} />
+        <Route path="/shortfilm" element={<ShortFilm />} />
+        <Route path="/watch/:id" element={<Watch />} />
+        <Route path="/WatchList" element={<WatchList />} />
+        <Route path="/result/:id" element={<SearchCard />} />
+        <Route path="/ZeeExclusive" element={<ZeeExclusive />} />
+        <Route path="/AllDocumentries" element={<AllDocumentries />} />
+        <Route path="/AllDrama" element={<AllDrama />} />
+        <Route path="/AllMovies" element={<AllMovies />} />
+        <Route path="/AllShows" element={<AllShows />} />
+        <Route path="/AllTrailer" element={<AllTrailer />} />
+        <Route path="/AllWebSeries" element={<AllWebSeries />} />
+        <Route path="/NoResult" element={<NoResult />} />
+        <Route
+          path="/Profile"
+          element={isLoggedIn ? <Profile /> : <Navigate />}
+          username={userName}
+          email={Email}
+        />
+        <Route
+          path="/Subscription"
+          element={isLoggedIn ? <Subscription /> : <Navigate />}
+        />
+        <Route
+          path="/Retail"
+          element={isLoggedIn ? <Retail /> : <Navigate />}
+        />
+        <Route
+          path="/Transaction"
+          element={isLoggedIn ? <Transaction /> : <Navigate />}
+        />
+        {/* <Route path="/AboutUs" element={<AboutUs   />} /> */}
+        <Route path="/TermOfUse" element={<TermOfUse />} />
 
-          {/* protected routes */}
-          
-          <Route path="/Login" element={<Login handleNotShown={handleNotShown} setLoggedInStatus={setLoggedInStatus} setUserName={setUserName} setEMail={setEMail}/>} />
-          <Route path="/Register" element={<Registration handleNotShown={handleNotShown} setLoggedInStatus={setLoggedInStatus} setEMail={setEMail} setUserName={setUserName}/> } />
-          <Route path="/BuyPlan" element={<BuyPlan handleNotShown={handleNotShown}/>} /> 
-        </Routes>
-      </Router>
+        {/* protected routes */}
+
+        <Route
+          path="/Login"
+          element={
+            <Login
+              setLoggedInStatus={setLoggedInStatus}
+              setUserName={setUserName}
+              setEMail={setEMail}
+            />
+          }
+        />
+        <Route
+          path="/Register"
+          element={
+            <Registration
+              setLoggedInStatus={setLoggedInStatus}
+              setEMail={setEMail}
+              setUserName={setUserName}
+            />
+          }
+        />
+        <Route path="/BuyPlan" element={<BuyPlan />} />
+      </Routes>
     </>
   );
 };

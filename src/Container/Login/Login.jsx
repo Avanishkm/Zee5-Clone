@@ -2,11 +2,11 @@ import { Container, Button } from "@chakra-ui/react";
 import React from "react";
 import { CloseIcon } from '@chakra-ui/icons';
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation, json } from "react-router-dom";
 
-const Login = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
-  handleNotShown();
-
+const Login = ({  setLoggedInStatus, setUserName }) => {
+  
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -50,6 +50,8 @@ const Login = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
           );
           const data = await response.json();
           if (response.ok && data.status === "success") {
+            localStorage.setItem("token", data.token)
+            localStorage.setItem("user",JSON.stringify(data.data))
             console.log("registration successfully");
             setError("Login successfully");
             setColor("green");
@@ -73,17 +75,17 @@ const Login = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
     <Container
       sx={{
         bg: "white",
-        width: "30%",
+        width: "24%",
         marginLeft: "38%",
         marginTop: "100px",
         borderRadius: "10px",
         height: "450px",
       }}
     >
-      <NavLink to="/">
+      <NavLink  to="/">
         <CloseIcon
           style={{
-            color: "purple",
+            color: "red",
             borderRadius: "50%",
             marginLeft: "95%",
             height: "20px",
@@ -168,15 +170,15 @@ const Login = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
                 border: "2px solid plum",
                 marginTop: "25px",
                 color: "white",
-                background: "plum",
+                background: "#8230c6",
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "purple";
-                e.target.style.border = "1px solid purple";
+                e.target.style.backgroundColor = "#bd79f4";
+                e.target.style.border = "1px solid #bd79f4";
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "plum";
-                e.target.style.border = "2px solid plum";
+                e.target.style.backgroundColor = "#8230c6";
+                e.target.style.border = "2px solid #bd79f4";
               }}
               onClick={handleLogin}
             >
@@ -187,7 +189,7 @@ const Login = ({ handleNotShown, setLoggedInStatus, setUserName }) => {
               <div
                 style={{ marginLeft: "25%", marginTop: "35px", color: "black" }}
               >
-                New to ZEE5? <span style={{ color: "plum" }}>Register</span>
+                New to ZEE5? <span style={{ color: "#8230c6" }}>Register</span>
               </div>
             </Link>
           </>

@@ -36,11 +36,14 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   const searchStyle = {
     bg: "#0F0617",
     color: "white",
-    width: "220px",
+    width: "260px",
     height: "35px",
     pl: "40px",
     border: "1px solid grey",
-    borderRadius: "5px",
+    borderRadius: "8px",
+    fontSize: "12px",
+    
+    
   };
 
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
@@ -76,7 +79,6 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   };
 
   const handleLogout = () => {
-    //  console.log("ashg")
     localStorage.removeItem("signupDeatils");
     setIsLoggedIn(false);
   };
@@ -88,7 +90,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (toogleRef.current && !toogleRef.current.contains(event.target)) {
-        setIsDropDownOpen(false);
+        
         setMenuOpen(false);
       }
     };
@@ -101,7 +103,6 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   const handleSearchInputChange = (event) => {
     const userInput = event.target.value;
     setSearchData(userInput);
-    // Show suggestions when the user starts typing
     setShowSuggestions(userInput.length > 0);
   };
 
@@ -137,6 +138,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
             <Flex>
               <NavLink
                 to="/SearchCard"
+                
                 style={{ textDecoration: "none", color: "white" }}
               >
                 <Box className="searchButton">
@@ -238,7 +240,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                 <img
                   src="https://www.zee5.com/images/ZEE5_logo.svg?ver=2.52.40"
                   alt="zee logo"
-                  style={{ width: "50px", marginLeft: "20px", height: "50px"}}
+                  style={{ width: "50px", marginLeft: "20px", height: "50px" }}
                 />
                 <UnorderedList
                   style={{ listStyleType: "none", display: "flex", p: "10px" }}
@@ -391,7 +393,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                     )}
                     <InputLeftElement>
                       {/* <Link to="/SearchResult"> */}
-                      <SearchIcon
+                      <SearchIcon 
                         sx={{
                           cursor: "pointer",
                           color: "white",
@@ -428,7 +430,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                             paddingLeft: "0",
                             marginTop: "5px",
                             backgroundColor: "#0F0617",
-                            ":hover": { backgroundColor: "purple" },
+                            ":hover": { backgroundColor: "#a361d6" },
                           }}
                         >
                           <ul
@@ -576,6 +578,12 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                         fontSize: "Bold",
                         cursor: "pointer",
                         marginTop: "2px",
+                        fontWeight: "bold",
+                        ":hover": {
+                          backgroundColor: "white",
+                          color: "black",
+                          fontWeight: "bold",
+                        },
                       }}
                     >
                       Login
@@ -591,9 +599,11 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                       color: "white",
                       border: "1px #8230c6 solid",
                       borderRadius: "5px",
-                      width: "120px",
+                      width: "115px",
                       height: "36px",
                       cursor: "pointer",
+                      fontWeight: "bold",
+                      fontSize: "12px",
                       ":hover": {
                         backgroundColor: "#4B0082",
                         border: "1px #4B0082 solid",
@@ -601,9 +611,13 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                     }}
                   >
                     <LuCrown
-                      style={{ paddingRight: "5px", fontSize: "25px" }}
-                    />{" "}
-                    BUY PLANS
+                      style={{
+                        paddingRight: "10px",
+                        fontSize: "14px",
+                        
+                      }}
+                    />
+                    BUY PLAN
                   </Button>
                 </NavLink>
 

@@ -88,7 +88,7 @@ const Registration = ({ setLoggedInStatus, setUserName, setEMail }) => {
     <Container
       sx={{
         bg: "white",
-        width: "30%",
+        width: "24%",
         marginLeft: "38%",
         marginTop: "50px",
         borderRadius: "10px",
@@ -98,7 +98,7 @@ const Registration = ({ setLoggedInStatus, setUserName, setEMail }) => {
       <NavLink to="/">
         <CloseIcon
           style={{
-            color: "purple",
+            color: "red",
             borderRadius: "50%",
             marginLeft: "95%",
             height: "20px",
@@ -212,15 +212,15 @@ const Registration = ({ setLoggedInStatus, setUserName, setEMail }) => {
                 border: "2px solid plum",
                 marginTop: "25px",
                 color: "white",
-                background: "plum",
+                background: "#8230c6",
               }}
               onMouseEnter={(e) => {
-                e.target.style.backgroundColor = "purple";
-                e.target.style.border = "1px solid purple";
+                e.target.style.backgroundColor = "#bd79f4";
+                e.target.style.border = "1px solid #bd79f4";
               }}
               onMouseLeave={(e) => {
-                e.target.style.backgroundColor = "plum";
-                e.target.style.border = "2px solid plum";
+                e.target.style.backgroundColor = "#8230c6";
+                e.target.style.border = "2px solid #bd79f4";
               }}
               onClick={handleLogin}
             >
@@ -238,7 +238,7 @@ const Registration = ({ setLoggedInStatus, setUserName, setEMail }) => {
             >
               Already registered?
               <Link to="/Login" style={{ textDecoration: "none" }}>
-                <span style={{ color: "plum" }}>Login</span>
+                <span style={{ color: "#8230c6" }}>Login</span>
               </Link>
             </div>
           </>

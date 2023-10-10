@@ -5,8 +5,8 @@ import ComponentCard from "../ComponentCard/ComponentCard";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const Movies = ({ handleShown }) => {
-  handleShown();
+const Movies = () => {
+  
 
   const [moviesList, setMoviesList] = useState([]);
   const [romantic, setRomantic] = useState([]);

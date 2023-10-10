@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import 'react-multi-carousel/lib/styles.css'
 import {BsCaretRightFill} from 'react-icons/bs';
-import {LuCrown} from "react-icons/lu"
 import "react-multi-carousel/lib/styles.css";
 import movie1 from "../../Assets/movie1.webp";
 import movie3 from "../../Assets/movie3.webp";
@@ -28,17 +27,6 @@ const responsive = {
     items: 1,
   },
 };
-
-// function ImageSlider() {
-//   const carouselOptions = {
-//     responsive: responsive,
-//     autoPlay: true,
-//     Infinite: true,
-//     autoPlaySpeed: 2000,
-//     KeyboardControl: true,
-//     customTransition: "transform 500ms ease-in-out",
-//     removeArrowOnDeviceType: ["tablet", "mobile"],
-//   };
 
 function ImageSlider() {
   const [smallerScreen, setIsSmallScreen] = useState(window.innerWidth < 550);
@@ -273,26 +261,6 @@ function ImageSlider() {
         </div>
       )}
     </>
-    // <div className="largerCarousel" style={{marginTop:"5rem"}}>
-    //   <Carousel {...carouselOptions}>
-    //     <div>
-    //       <img className="large-slider-img" src={haddi} alt="movie1" />
-    //     </div>
-    //     <div>
-    //       <img className="large-slider-img" src={movie3} alt="movie2" />
-    //     </div>
-    //     <div>
-    //       <img className="large-slider-img" src={sirf} alt="movie3" />
-    //     </div>
-    //     <div>
-    //       <img className="large-slider-img" src={gadder} alt="movie4" />
-    //     </div>
-
-    //     <div>
-    //       <img className="large-slider-img" src={tvImg1} alt="tvImg1" />
-    //     </div>
-    //   </Carousel>
-    // </div>
   );
 }
 

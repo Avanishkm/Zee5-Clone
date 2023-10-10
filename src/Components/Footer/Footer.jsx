@@ -1,6 +1,7 @@
 import React from "react";
 import { Flex, Container } from "@chakra-ui/react";
 
+
 export default function Footer() {
   return (
     <Container style={{ marginTop: "4%" }}>

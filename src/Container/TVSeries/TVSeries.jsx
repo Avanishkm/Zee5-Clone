@@ -10,8 +10,8 @@ import Footer from "../../Components/Footer/Footer";
 import { useState } from "react";
 import { useEffect } from "react";
 
-const TVSeries = ({ handleShown }) => {
-  handleShown();
+const TVSeries = () => {
+  
   const[smallerScreen, setSmallerScreen] = useState(window.innerWidth<500)
   const [tvShowList, settvShowList] = useState([]);
   const [romantic, setRomantic] = useState([]);

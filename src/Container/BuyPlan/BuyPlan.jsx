@@ -3,8 +3,7 @@ import { Button, background } from '@chakra-ui/react'
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
-const BuyPlan = ({handleNotShown}) => {
-  handleNotShown()
+const BuyPlan = () => {
   const background = {
     background: `url('https://www.91-cdn.com/pricebaba-blogimages/wp-content/uploads/2023/06/Zee5-Subscription-plans.jpg')`,
     backgroundSize: 'cover',
