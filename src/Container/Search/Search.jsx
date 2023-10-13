@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Button, Box } from '@chakra-ui/react';
-import { AddIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 
 const Search = () => {
   const {id} = useParams();
   const [] = useState(null);
   const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [isHovered, setIsHovered] = useState(false);
+  const [error, setError] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
 
     const getMovies=async()=>{
       try{

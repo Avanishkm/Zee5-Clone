@@ -115,12 +115,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  if(location.pathname === "/login" || location.pathname==="/BuyPlan" || location.pathname === "/register"){
-    return null;
-  }
-
-
+  
   return (
     <>
       {smallerScreen ? (

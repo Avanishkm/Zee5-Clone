@@ -5,10 +5,10 @@ import ComponentCard from "../ComponentCard/ComponentCard";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import Footer from "../../Components/Footer/Footer";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import "./home.css"
 
 export default function Home() {
   
-
   const [exclusiveList, setExclusivesList] = useState([]);
   const [moviesList, setMoviesList] = useState([]);
   const [tvShow, setTvList] = useState([]);
@@ -41,7 +41,7 @@ export default function Home() {
           (item) => item.type === "documentary"
         );
 
-        //  console.log(data.data);
+        
         setExclusivesList(exclusiveList);
         setMoviesList(moviesData);
         setTvList(tvShowData);
@@ -115,12 +115,12 @@ export default function Home() {
         </Container>
       ) : (
         <>
-          <Container>
+          <Container >
             <Container>
               <ImageSlider />
             </Container>
             <Container style={{ marginTop: "40px", marginLeft: "10px" }}>
-              <Flex style={{ justifyContent: "space-between" }}>
+              <Flex  style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
                   sx={{
