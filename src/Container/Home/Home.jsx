@@ -16,7 +16,6 @@ export default function Home() {
   const [trailer, setTrailer] = useState([]);
   const [webSeries, setWebSeries] = useState([]);
   const [documentries, setDocumentries] = useState([]);
-
   const [smallerScreen, setIsSmallScreen] = useState(window.innerWidth < 500);
 
   const getMovies = async () => {
@@ -100,14 +99,14 @@ export default function Home() {
   useEffect(() => {
     getMovies();
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 800);
+      setIsSmallScreen(window.innerWidth < 500);
     };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
+  
   return (
     <>
       {smallerScreen ? (

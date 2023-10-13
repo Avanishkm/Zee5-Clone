@@ -116,6 +116,11 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
     };
   }, []);
 
+  if(location.pathname === "/login" || location.pathname==="/BuyPlan" || location.pathname === "/register"){
+    return null;
+  }
+
+
   return (
     <>
       {smallerScreen ? (
