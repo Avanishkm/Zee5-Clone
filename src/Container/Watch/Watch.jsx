@@ -99,7 +99,7 @@ export default function Watch(){
             <p>Loading...</p>
           )}
           <Container sx={{ color: "white" }}>
-            <h2 style={{ marginLeft: "50px" }}>{itemId.title}</h2>
+            <h2 style={{ marginLeft: "30px" }}>{itemId.title}</h2>
             <ul>
               <Flex>
                 <li style={{ marginLeft: "30px", marginRight: "40px" }}>

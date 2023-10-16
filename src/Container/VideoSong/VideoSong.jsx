@@ -1,7 +1,6 @@
 import { Container, Box, Flex} from '@chakra-ui/react'
 import {useEffect, useState} from 'react';
 import React from "react";
-import Footer from "../../Components/Footer/Footer";
 import ComponentCard from "../ComponentCard/ComponentCard";
 
 const VideoSong = () => {
@@ -31,7 +30,7 @@ useEffect(() => {
   
   return (
     <>
-      <Container style={{marginLeft:"10px"}}>
+      <Container style={{marginLeft:"150px"}}>
           <Box
             as="p"
             sx={{
@@ -54,7 +53,7 @@ useEffect(() => {
             ))}
             </Flex>
         </Container>
-        <Footer/>
+       
       
     </>
   );

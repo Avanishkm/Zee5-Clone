@@ -5,7 +5,7 @@ import ComponentCard from "../ComponentCard/ComponentCard";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import Footer from "../../Components/Footer/Footer";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import "./home.css"
+// import "./home.css"
 
 export default function Home() {
   

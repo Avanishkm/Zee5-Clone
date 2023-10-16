@@ -9,10 +9,10 @@ import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ShareButton from "../ShareButton/ShareButton";
 
 const ComponentCard = ({ item }) => {
-  const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 550);
+  const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 500);
   useEffect(() => {
     const handleResize = () => {
-      setSmallerScreen(window.innerWidth < 550);
+      setSmallerScreen(window.innerWidth < 500);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -105,52 +105,6 @@ const ComponentCard = ({ item }) => {
           </div>
         </div>
       )}
-      {/* <div className="container">
-        <div className="box">
-          <div className="image-container">
-            <div className="image-overlay">
-              <Link to={`/watch/${item._id}`} style={{ textDecoration: "none" }}>
-                <img
-                  src={item.thumbnail}
-                  alt="image.title"
-                  className="dataImage"
-                />
-              </Link>
-              <div className="card-content">
-                <div className="image-title">
-                  {item.title}
-                  <br />
-                  <Flex>
-                    <Link
-                      to={`/watch/${item._id}`}
-                      style={{ textDecoration: "none" }}
-                    >
-                      <div className="watch-button">
-                        <PlayArrowIcon className="arrowIcon" />
-                        <div
-                          style={{
-                            marginLeft: "2px",
-                            paddingTop: "2px",
-                            fontSize: "15px",
-                            fontWeight: "normal",
-                            textDecoration: "none",
-                          }}
-                        >
-                          {" "}
-                          Watch
-                        </div>
-                      </div>
-                    </Link>
-                    <div className="share-icon" style={{ border: "none" }}>
-                      <ShareButton />
-                    </div>
-                  </Flex>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>
   );
 };

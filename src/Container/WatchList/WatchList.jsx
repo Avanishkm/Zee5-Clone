@@ -39,7 +39,7 @@ export default function Watchlist() {
 
   async function addRemoveWatchList(showId){
     const token = localStorage.getItem("token");
-    console.log("userData", token);
+    // console.log("userData", token);
     if(token){
       
      const response= await fetch(`https://academics.newtonschool.co/api/v1/ott/watchlist/like`,{
@@ -54,7 +54,7 @@ export default function Watchlist() {
       });
       if (response.ok){
         const updatedWatchlist = isAdded
-        ? watchlist.filter((item) => item._id !== showId)
+        ? watchlist.filter((item) => item?._id !== showId)
         : [...watchlist, showId];
 
       setWatchList(updatedWatchlist);
@@ -66,7 +66,6 @@ export default function Watchlist() {
      useEffect(()=>{
       getWatchList();
      },[])
-
 
     return (
       <div style={{ marginTop: "7rem" }}>
@@ -93,10 +92,10 @@ export default function Watchlist() {
           {watchlist.map((item) => (
           <Box style={{margin:"10px", padding:"20px", display:"flex",flexDirection:"column", alignItem:"flex-start", height:"150px", width:"300px", flexWrap:"wrap"}}>
           <Container style={{ maxHeight:"150px", width:"50%", overflow:"hidden"}}>
-          <img src={item.thumbnail} alt="item.title" style={{width:"100%", objectFit:"cover", borderRadius:"8px"}}/>
+          <img src={item?.thumbnail} alt="item.title" style={{width:"100%", objectFit:"cover", borderRadius:"8px"}}/>
           </Container>
-          <div style={{textAlign:"left", color:"white", paddingLeft:"20px", paddingTop:"50px",width:"50%", height:"40px"}}>{item.title}</div>
-          <Button onClick={() => addRemoveWatchList(item._id)} style={{top:"-90px", left:"80px", cursor:"pointer", border:"none", backgroundColor:"transparent", color:"white"}}>
+          <div style={{textAlign:"left", color:"white", paddingLeft:"20px", paddingTop:"50px",width:"50%", height:"40px"}}>{item?.title}</div>
+          <Button onClick={() => addRemoveWatchList(item?._id)} style={{top:"-90px", left:"80px", cursor:"pointer", border:"none", backgroundColor:"transparent", color:"white"}}>
             <AiOutlineClose/>
             </Button>
           </Box>

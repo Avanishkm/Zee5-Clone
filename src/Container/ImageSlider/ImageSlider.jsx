@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
-import 'react-multi-carousel/lib/styles.css'
-import {BsCaretRightFill} from 'react-icons/bs';
+import "react-multi-carousel/lib/styles.css";
+import { BsCaretRightFill } from "react-icons/bs";
 import "react-multi-carousel/lib/styles.css";
 import movie1 from "../../Assets/movie1.webp";
 import movie3 from "../../Assets/movie3.webp";
 import movie2 from "../../Assets/movie2.webp";
 import movie4 from "../../Assets/movie4.webp";
-import smallMovie1 from "../../Assets/smallMovie1.webp"
-import smallMovie2 from "../../Assets/smallMovie2.webp"
-import smallMovie3 from "../../Assets/smallMovie3.webp"
-import smallMovie4 from "../../Assets/smallmovie4.webp"
-import { NavLink } from 'react-router-dom';
+import smallMovie1 from "../../Assets/smallMovie1.webp";
+import smallMovie2 from "../../Assets/smallMovie2.webp";
+import smallMovie3 from "../../Assets/smallMovie3.webp";
+import smallMovie4 from "../../Assets/smallmovie4.webp";
+import { NavLink } from "react-router-dom";
 
 const responsive = {
   desktop: {

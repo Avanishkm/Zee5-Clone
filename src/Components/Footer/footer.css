@@ -1,4 +1,4 @@
-.main-container{
+/* .main-container{
     margin-top: 4px;
 }
 
@@ -6,17 +6,17 @@
     border-color: grey;
     border-width: 1px;
     margin-bottom: 1rem;
-}
+} */
 
-.child-container{
+/* .child-container{
     margin-top: 3%;
     margin-left: 4%;
 }
 .flex{
     color: white;
-}
+} */
 
-img{
+/* img{
     width: 100px;
     height: 40px;
     margin-top: 10px;
@@ -24,31 +24,31 @@ img{
 }
 .h3{
     margin-left: 50%;
-}
+} */
 
-.icons{
+/* .icons{
     width: 30px;
     height: 30px;
     margin-top: 15px;
     margin-left: 30px;
     border-radius: 50%;
-}
+} */
 
 /* Responsive */
 
 /* Adjust styles for tablets and smaller screens */
 /* Example: Increase the font size for smaller screens */
-@media (max-width: 768px){
+/* @media (max-width: 768px){
     h4{
         font-size: 1rem;
     }
-}
+} */
 
 
 /* Adjust styles for mobile screens */
 /* Example: Reduce margin for smaller screens */
-@media (max-width: 768px){
+/* @media (max-width: 768px){
     h4{
         font-size: 1rem;
     }
-}
+} */
