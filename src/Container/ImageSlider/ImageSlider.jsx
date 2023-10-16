@@ -3,11 +3,11 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsCaretRightFill } from "react-icons/bs";
 import "react-multi-carousel/lib/styles.css";
-import movie1 from "../../Assets/movie1.webp";
+
+import haddi from "../../Assets/haddi.png";
 import movie3 from "../../Assets/movie3.webp";
 import movie2 from "../../Assets/movie2.webp";
 import movie4 from "../../Assets/movie4.webp";
-import smallMovie1 from "../../Assets/smallMovie1.webp";
 import smallMovie2 from "../../Assets/smallMovie2.webp";
 import smallMovie3 from "../../Assets/smallMovie3.webp";
 import smallMovie4 from "../../Assets/smallmovie4.webp";
@@ -67,8 +67,8 @@ function ImageSlider() {
               <div style={{ position: "relative" }}>
                 <img
                   className="large-slider-img"
-                  src={smallMovie1}
-                  alt="movie1"
+                  src={haddi}
+                  alt="haddi"
                 />
                 <NavLink
                   to="/watch/64cffee700bad552e8dcd533"
@@ -174,7 +174,7 @@ function ImageSlider() {
         >
           <Carousel {...carouselOptions}>
             <div style={{ position: "relative" }}>
-              <img className="large-slider-img" src={movie1} alt="movie1" />
+              <img className="large-slider-img" src={haddi} alt="haddi" />
               <NavLink
                 to="/watch/64cffee700bad552e8dcd533"
                 style={{

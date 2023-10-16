@@ -28,8 +28,8 @@ export default function Watchlist() {
       console.log("response", response);
       const data = await response.json();
       console.log("data i need:", data.data);
-      if (Array.isArray(data.data?.shows)){
-      setWatchList(data.data?.shows);
+      if (Array.isArray(data?.data?.shows)){
+      setWatchList(data?.data?.shows);
       setLoading(false)
       } else {
         console.error("Data is not an array:", data.data.shows);
