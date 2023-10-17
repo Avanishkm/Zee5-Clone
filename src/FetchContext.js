@@ -3,8 +3,6 @@ import { createContext, useEffect, useState } from "react";
 const FetchContext = createContext();
 export default FetchContext;
 
-
-
  const FetchProvider = ({children}) =>{
     const[apiData, setApi] = useState([]);
     
@@ -24,7 +22,7 @@ export default FetchContext;
                     }
                   });
                   const data = await response.json();
-                  console.log(data);
+                  // console.log(data);
                   const result = data.data;
                   setApi(result);
             localStorage.setItem("videoData", JSON.stringify({"videoData": result}))
@@ -42,8 +40,4 @@ export default FetchContext;
       );
     };
      
-
     export {FetchProvider}
-  
-    
-    // export default FetchContext;

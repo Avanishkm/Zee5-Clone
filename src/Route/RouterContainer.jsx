@@ -26,6 +26,7 @@ import Subscription from "../Container/Subscription/Subscription";
 import Retail from "../Container/Retail/Retail";
 import Transaction from "../Container/Transaction/Transaction";
 import TermOfUse from "../Container/TermOfUse/TermOfUse";
+import { FetchProvider } from "../FetchContext";
 
 const RouterContainer = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -51,6 +52,7 @@ const RouterContainer = () => {
 
   return (
     <>
+    <FetchProvider>
       {!showHead && (
         <Header
           isLoggedIn={isLoggedIn}
@@ -121,6 +123,7 @@ const RouterContainer = () => {
         />
         <Route path="/BuyPlan" element={<BuyPlan />} />
       </Routes>
+      </FetchProvider>
     </>
   );
 };

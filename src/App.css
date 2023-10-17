@@ -77,8 +77,6 @@ body{
 }
 .cardStyle:hover{
   background-color: #1f0239;
-  ;
-  /* border: "2px solid rgb(58, 11, 58)"; */
   border-radius: 5px;
 }
 
@@ -148,20 +146,19 @@ border-radius: 2px;
 }
 
 .image-title {
-  display: none; /* Hide the title by default */
+  display: none; 
   position: absolute;
   top: 0;
   left: -2px;
   margin-top: 115%;
   width: 105%;
   height: 30%;
-  background-color: white;/* Background color for the title */
-  color:rgb(61, 58, 58); /* Text color for the title */
+  background-color: white;
+  color:rgb(61, 58, 58);
   font-size: 13px;
   text-align: left;
   padding-left: 5px;
   padding-top: 10px;
-  /* padding: 2px; */
   box-sizing: border-box;
   font-weight: bold;
   overflow: hidden;
@@ -177,7 +174,7 @@ border-radius: 2px;
 
 .image-overlay {
   position: relative;
-  border: 10px solid transparent; /* Add a transparent border by default */
+  border: 10px solid transparent;
   border-radius: 8px; 
 }
 
@@ -296,10 +293,6 @@ color: purple;
     font-weight: bold;
     cursor: pointer;
 }
-
-/* .ProfileList li:hover{
-background-color: purple;
-} */
 .profileItem{
   padding-bottom: 15px;
   padding-left: 10px;
@@ -360,17 +353,18 @@ border-radius: 10px;
 }
 
 .menu{
-cursor: pointer;
-margin-top: 3.5rem;
-margin-left: 15rem;
-position: absolute;
-background-color:#0F0617;
-max-height: 26rem;
-width: 330px;
-overflow-y: scroll;
-scrollbar-width: thin;
-scrollbar-color:  grey rgb(42, 41, 41);
-box-shadow: 0 2px 4px 0 rgba(0, 0, 0.5);
+  cursor: pointer;
+  margin-top: 3.5rem;
+  margin-left: 15rem;
+  position: absolute;
+  background-color: #0f0617;
+  max-height: 26rem;
+  width: 330px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: grey rgb(42, 41, 41);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0.5);
+  z-index: 10000 !important;
 }
 
 .menu::-webkit-scrollbar {
@@ -392,6 +386,12 @@ width:110px;
 height:30px;
 margin-top: 20px;
 }
+
+.BuyPlanButton:hover {
+  background-color: #4b0082;
+  border: 1px #4b0082 solid;
+}
+
 .navButton{
   margin-left: 24px;
   margin-right: 5px;
@@ -418,4 +418,9 @@ margin-top: 20px;
   margin-top: 10px;
   font-size: 15px;
   margin-left: 15px;
+}
+
+.login-btn:hover {
+  color: #000000;
+  background-color: #fff;
 }

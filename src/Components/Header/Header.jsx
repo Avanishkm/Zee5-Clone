@@ -5,16 +5,14 @@ import {
   Flex,
   UnorderedList,
   ListItem,
-  Spacer,
   Button,
   Box,
   Input,
   InputGroup,
   InputLeftElement,
-  textDecoration,
-  position,
+
 } from "@chakra-ui/react";
-import { SearchIcon, DragHandleIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
 import { NavLink, Link } from "react-router-dom";
 
 import Zee from "../../Assets/Zee.jpeg";
@@ -28,7 +26,7 @@ import {
   AccordionPanel,
   AccordionItem,
 } from "@chakra-ui/react";
-import { LuCrown } from "react-icons/lu";
+import { BiSolidCrown } from "react-icons/bi";
 import SearchCard from "../../Container/SearchCard/SearchCard";
 
 export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
@@ -130,7 +128,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
 
               <NavLink to="/BuyPlan">
                 <Button className="BuyPlanButton">
-                  <LuCrown style={{ paddingRight: "5px", fontSize: "15px" }} />
+                  <BiSolidCrown style={{ paddingRight: "5px", fontSize: "16px" }} />
                   BUY PLANS
                 </Button>
               </NavLink>
@@ -603,17 +601,17 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                       height: "36px",
                       cursor: "pointer",
                       fontWeight: "bold",
-                      fontSize: "12px",
+                      fontSize: "13px",
                       ":hover": {
                         backgroundColor: "#4B0082",
                         border: "1px #4B0082 solid",
                       },
                     }}
                   >
-                    <LuCrown
+                    <BiSolidCrown
                       style={{
                         paddingRight: "10px",
-                        fontSize: "14px",
+                        fontSize: "20px",
                         
                       }}
                     />
@@ -701,6 +699,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                                 Movies
                               </li>
                             </NavLink>
+                            
                             <NavLink
                               to="/NoResult"
                               style={{ textDecoration: "none", color: "white" }}

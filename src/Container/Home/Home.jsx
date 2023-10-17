@@ -1,126 +1,350 @@
 import { Container, Box, Flex } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ComponentCard from "../ComponentCard/ComponentCard";
 import ImageSlider from "../ImageSlider/ImageSlider";
 import Footer from "../../Components/Footer/Footer";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-// import "./home.css"
+import FetchContext from "../../FetchContext";
+
 
 export default function Home() {
-  
-  const [exclusiveList, setExclusivesList] = useState([]);
-  const [moviesList, setMoviesList] = useState([]);
-  const [tvShow, setTvList] = useState([]);
-  const [video, setVideo] = useState([]);
-  const [trailer, setTrailer] = useState([]);
-  const [webSeries, setWebSeries] = useState([]);
-  const [documentries, setDocumentries] = useState([]);
-  const [smallerScreen, setIsSmallScreen] = useState(window.innerWidth < 500);
 
-  const getMovies = async () => {
-    try {
-      const storedData = localStorage.getItem("videoData");
+  const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 500);
 
-      if (storedData) {
-        const getData = JSON.parse(storedData);
-        const parseData = getData.videoData;
-        const exclusiveList = parseData.filter(
-          (item) => item.type === "short film"
-        );
-        const moviesData = parseData.filter((item) => item.type === "movie");
-        const tvShowData = parseData.filter((item) => item.type === "tv show");
-        const videoData = parseData.filter(
-          (item) => item.type === "video song"
-        );
-        const trailerData = parseData.filter((item) => item.type === "trailer");
-        const webSeriesData = parseData.filter(
-          (item) => item.type === "web series"
-        );
-        const documentriesData = parseData.filter(
-          (item) => item.type === "documentary"
-        );
-
-        
-        setExclusivesList(exclusiveList);
-        setMoviesList(moviesData);
-        setTvList(tvShowData);
-        setVideo(videoData);
-        setTrailer(trailerData);
-        setWebSeries(webSeriesData);
-        setDocumentries(documentriesData);
-      } else {
-        const response = await fetch(
-          "https://academics.newtonschool.co/api/v1/ott/show?limit=100",
-          {
-            method: "GET",
-            headers: {
-              projectId: "f104bi07c490",
-            },
-          }
-        );
-        const data = await response.json();
-        console.log(data);
-        const result = data.data;
-        const exclusiveList = result.filter(
-          (item) => item.type === "short film"
-        );
-        const moviesData = result.filter((item) => item.type === "movie");
-        const tvShowData = result.filter((item) => item.type === "tv show");
-        const videoData = result.filter((item) => item.type === "video song");
-        const trailerData = result.filter((item) => item.type === "trailer");
-        const webSeriesData = result.filter(
-          (item) => item.type === "web series"
-        );
-        const documentriesData = result.filter(
-          (item) => item.type === "documentary"
-        );
-
-        //  console.log(data.data);
-        setExclusivesList(exclusiveList);
-        setMoviesList(moviesData);
-        setTvList(tvShowData);
-        setVideo(videoData);
-        setTrailer(trailerData);
-        setWebSeries(webSeriesData);
-        setDocumentries(documentriesData);
-        console.log("result", result);
-
-        localStorage.setItem(
-          "videoData",
-          JSON.stringify({ videoData: result })
-        );
-      }
-    } catch (error) {
-      console.error("error");
-    }
-  };
+  const { apiData } = useContext(FetchContext);
 
   useEffect(() => {
-    getMovies();
+    
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 500);
+      setSmallerScreen(window.innerWidth < 500);
     };
     window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const renderComponentCards = (data) => {
+    if (!Array.isArray(data)) {
+      return null;
+    }
+
+    return (
+      <Flex
+        sx={{
+          overflowX: "scroll",
+          overflowY: "hidden",
+          "&::-webkit-scrollbar": { width: "1px" },
+
+          paddingLeft: window.innerWidth < 700 ? "0px" : "20px",
+        }}
+      >
+        {data.slice(0, 10).map((item) => (
+          <ComponentCard key={item._id} item={item} />
+        ))}
+      </Flex>
+    );
+  };
   
   return (
     <>
       {smallerScreen ? (
-        <Container>
-          <ImageSlider />
-        </Container>
+        <>
+          <Container>
+            <ImageSlider />
+          </Container>
+          <Container
+            style={{
+              marginTop: "40px",
+              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+            }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "20px",
+                  letterSpacing: "1px",
+                  marginBottom: "0",
+                }}
+              >
+                ZEE5 Exclusives
+              </Box>
+              <Link
+                to="/ZeeExclusive"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "short film")
+            )}
+          </Container>
+          <Container
+            style={{ marginLeft: window.innerWidth < 700 ? "10px" : "40px" }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "15px",
+                  letterSpacing: "1px",
+                  marginBottom: "0",
+                }}
+              >
+                Top Hollywood Movies
+              </Box>
+              <Link
+                to="/AllMovies"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "movie")
+            )}
+          </Container>
+
+          <Container
+            style={{
+              marginTop: "40px",
+              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+            }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "15px",
+                  letterSpacing: "1px",
+                  marginBottom: "0",
+                }}
+              >
+                Unmissable shows
+              </Box>
+              <Link
+                to="/AllShows"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "tv show")
+            )}
+          </Container>
+
+          <Container
+            style={{
+              marginTop: "40px",
+              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+            }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "15px",
+                  letterSpacing: "1px",
+                  marginBottom: "0",
+                }}
+              >
+                World Hits | Free Dubbed Movies
+              </Box>
+              <Link
+                to="/AllTrailer"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "video song")
+            )}
+          </Container>
+
+          <Container
+            style={{
+              marginTop: "40px",
+              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+            }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "15px",
+                  letterSpacing: "1px",
+                  marginBottom: "0",
+                }}
+              >
+                Cross Border Drama Shows
+              </Box>
+              <Link
+                to="/AllDrama"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "trailer")
+            )}
+          </Container> 
+          <Container
+            style={{
+              marginTop: "40px",
+              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+            }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "10px",
+                  letterSpacing: "1px",
+                  marginBottom: "0",
+                }}
+              >
+                Inspired From Real Life
+              </Box>
+              <Link
+                to="/AllDocumentries"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "documentary")
+            )}
+          </Container>
+
+          <Container
+            style={{
+              marginTop: "40px",
+              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+            }}
+          >
+            <Flex style={{ justifyContent: "space-between" }}>
+              <Box
+                as="p"
+                sx={{
+                  fontSize: "15px",
+                  color: "white",
+                  fontFamily: "Arial",
+                  marginLeft: "15px",
+                  marginBottom: "0",
+                  letterSpacing: "1px",
+                }}
+              >
+                Web Series
+              </Box>
+              <Link
+                to="/AllWebSeries"
+                style={{ textDecoration: "none", color: "#a785ff" }}
+              >
+                <Box
+                  style={{
+                    color: "#a785ff",
+                    paddingTop: "15px",
+                    paddingRight: "10px",
+                    fontSize: "12px",
+                  }}
+                >
+                  More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
+                </Box>
+              </Link>
+            </Flex>
+            {renderComponentCards(
+              apiData.filter((item) => item.type === "web series")
+            )}
+          </Container>
+          <Footer />
+        </>
       ) : (
         <>
-          <Container >
+          <Container>
             <Container>
               <ImageSlider />
             </Container>
             <Container style={{ marginTop: "40px", marginLeft: "10px" }}>
-              <Flex  style={{ justifyContent: "space-between" }}>
+              <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
                   sx={{
@@ -149,25 +373,12 @@ export default function Home() {
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  marginLeft: "20px",
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {exclusiveList.map((exclusive, index) => (
-                  <ComponentCard
-                    key={exclusive._id}
-                    item={exclusive}
-                   
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "short film")
+              )}
             </Container>
 
-            <Container style={{ marginTop: "20px", marginLeft: "40px" }}>
+            <Container style={{ marginLeft: "40px" }}>
               <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
@@ -193,28 +404,16 @@ export default function Home() {
                       paddingRight: "10px",
                     }}
                   >
-                    More <ChevronRightIcon style={{ fontSize: "15px" }} />
+                    More <ChevronRightIcon style={{ fontSize: "15px" }} />{" "}
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {moviesList.map((movie, index) => (
-                  <ComponentCard
-                    key={movie._id}
-                    item={movie}
-                    
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "movie")
+              )}
             </Container>
 
-            <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
+            <Container style={{ marginLeft: "40px" }}>
               <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
@@ -244,24 +443,12 @@ export default function Home() {
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {tvShow.map((tvShow, index) => (
-                  <ComponentCard
-                    key={tvShow._id}
-                    item={tvShow}
-                    
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "tv show")
+              )}
             </Container>
 
-            <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
+            <Container style={{ marginLeft: "40px" }}>
               <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
@@ -291,24 +478,12 @@ export default function Home() {
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {video.map((video, index) => (
-                  <ComponentCard
-                    key={video._id}
-                    item={video}
-                    
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "trailer")
+              )}
             </Container>
 
-            <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
+            <Container style={{ marginLeft: "40px" }}>
               <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
@@ -338,28 +513,17 @@ export default function Home() {
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {trailer.map((trailer, index) => (
-                  <ComponentCard
-                    key={trailer._id}
-                    item={trailer}
-                    
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "video song")
+              )}
             </Container>
-            <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
+
+            <Container style={{ marginLeft: "40px" }}>
               <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
                   sx={{
-                    fontSize: "25px",
+                    fontSize: "20px",
                     color: "white",
                     fontFamily: "Arial",
                     marginLeft: "20px",
@@ -384,29 +548,17 @@ export default function Home() {
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {documentries.map((documentary, index) => (
-                  <ComponentCard
-                    key={documentary._id}
-                    item={documentary}
-                    
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "documentary")
+              )}
             </Container>
 
-            <Container style={{ marginTop: "40px", marginLeft: "40px" }}>
+            <Container style={{ marginLeft: "40px" }}>
               <Flex style={{ justifyContent: "space-between" }}>
                 <Box
                   as="p"
                   sx={{
-                    fontSize: "25px",
+                    fontSize: "20px",
                     color: "white",
                     fontFamily: "Arial",
                     marginLeft: "20px",
@@ -431,21 +583,9 @@ export default function Home() {
                   </Box>
                 </Link>
               </Flex>
-              <Flex
-                sx={{
-                  overflowX: "scroll",
-                  overflowY: "scroll",
-                  "&::-webkit-scrollbar": { width: "1px" },
-                }}
-              >
-                {webSeries.map((webSeries, index) => (
-                  <ComponentCard
-                    key={webSeries._id}
-                    item={webSeries}
-                    
-                  />
-                ))}
-              </Flex>
+              {renderComponentCards(
+                apiData.filter((item) => item.type === "web series")
+              )}
             </Container>
           </Container>
           <Footer />

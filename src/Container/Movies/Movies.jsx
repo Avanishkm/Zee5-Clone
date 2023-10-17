@@ -146,8 +146,7 @@ const Movies = () => {
               <ComponentCard
                 key={action._id}
                 item={action}
-                // isHovered={hoveredStates.action[index]}
-                // handleHover={(isHovered) => handleHover("action", index, isHovered)}
+                
               />
             ))}
           </Flex>
@@ -178,8 +177,7 @@ const Movies = () => {
               <ComponentCard
                 key={comedy._id}
                 item={comedy}
-                // isHovered={hoveredStates.comedy[index]}
-                // handleHover={(isHovered) => handleHover("comedy", index, isHovered)}
+                
               />
             ))}
           </Flex>
@@ -210,8 +208,7 @@ const Movies = () => {
               <ComponentCard
                 key={romantic._id}
                 item={romantic}
-                // isHovered={hoveredStates.romantic[index]}
-                // handleHover={(isHovered) => handleHover("romantic", index, isHovered)}
+                
               />
             ))}
           </Flex>
@@ -242,8 +239,7 @@ const Movies = () => {
               <ComponentCard
                 key={horror._id}
                 item={horror}
-                // isHovered={hoveredStates.horror[index]}
-                // handleHover={(isHovered) => handleHover("horror", index, isHovered)}
+                
               />
             ))}
           </Flex>

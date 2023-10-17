@@ -1,18 +1,15 @@
-import { Button, Box, Flex } from "@chakra-ui/react";
+import { Flex } from "@chakra-ui/react";
 import React from "react";
-import { Link, json } from "react-router-dom";
-import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-// import shareIcon from "../../Assets/shareIcon.png";
-// import WatchIcon from "../../Assets/WatchIcon.jpg";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import ShareButton from "../ShareButton/ShareButton";
 
 const ComponentCard = ({ item }) => {
-  const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 500);
+  const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 550);
   useEffect(() => {
     const handleResize = () => {
-      setSmallerScreen(window.innerWidth < 500);
+      setSmallerScreen(window.innerWidth < 550);
     };
     window.addEventListener("resize", handleResize);
     return () => {

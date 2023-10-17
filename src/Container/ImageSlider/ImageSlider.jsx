@@ -35,7 +35,7 @@ function ImageSlider() {
     responsive: responsive,
     autoPlay: false,
     infinite: true,
-    autoPlaySpeed: 2000,
+    autoPlaySpeed: 4000,
     keyBoardControl: true,
     customTransition: "transform 500ms ease-in-out",
     removeArrowOnDeviceType: ["tablet", "mobile"],
@@ -57,7 +57,7 @@ function ImageSlider() {
         <>
           <div
             style={{
-              marginTop: "1rem",
+              marginTop: "7rem",
               zIndex: "0",
               paddingLeft: "5px",
               paddingRight: "10px",
