@@ -3,11 +3,11 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { BsCaretRightFill } from "react-icons/bs";
 import "react-multi-carousel/lib/styles.css";
-
-import haddi from "../../Assets/haddi.png";
+import gadder from "../../Assets/gadder.webp";
 import movie3 from "../../Assets/movie3.webp";
-import movie2 from "../../Assets/movie2.webp";
-import movie4 from "../../Assets/movie4.webp";
+import sirf from "../../Assets/sirf.jpg"
+import movie1 from "../../Assets/movie1.jpg";
+import smallMovie1 from "../../Assets/smallMovie1.webp";
 import smallMovie2 from "../../Assets/smallMovie2.webp";
 import smallMovie3 from "../../Assets/smallMovie3.webp";
 import smallMovie4 from "../../Assets/smallmovie4.webp";
@@ -19,7 +19,7 @@ const responsive = {
     items: 1,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 1024, min: 464 }, 
     items: 1,
   },
   mobile: {
@@ -67,8 +67,8 @@ function ImageSlider() {
               <div style={{ position: "relative" }}>
                 <img
                   className="large-slider-img"
-                  src={haddi}
-                  alt="haddi"
+                  src={smallMovie1}
+                  alt="sirf"
                 />
                 <NavLink
                   to="/watch/64cffee700bad552e8dcd533"
@@ -174,7 +174,7 @@ function ImageSlider() {
         >
           <Carousel {...carouselOptions}>
             <div style={{ position: "relative" }}>
-              <img className="large-slider-img" src={haddi} alt="haddi" />
+              <img className="large-slider-img" src={sirf} alt="sirf" />
               <NavLink
                 to="/watch/64cffee700bad552e8dcd533"
                 style={{
@@ -193,7 +193,7 @@ function ImageSlider() {
             </div>
 
             <div style={{ position: "relative" }}>
-              <img className="large-slider-img" src={movie2} alt="movie2" />
+              <img className="large-slider-img" src={gadder} alt="gadder" />
               <NavLink
                 to="/watch/64cffee700bad552e8dcd52f"
                 style={{
@@ -237,7 +237,7 @@ function ImageSlider() {
             </div>
 
             <div>
-              <img className="large-slider-img" src={movie4} alt="movie4" />
+              <img className="large-slider-img" src={movie1} alt="movie1" />
               <NavLink
                 to="/watch/64cffee700bad552e8dcd50d"
                 style={{
