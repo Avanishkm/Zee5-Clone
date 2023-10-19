@@ -221,7 +221,7 @@ export default function Watch(){
                 <li style={{ color: "white" }}>{itemId.type?.toUpperCase()}</li>
               </Flex>
             </ul>
-            <Flex>
+            <Flex style={{gap:"20px"}}>
               <Button
                 sx={{
                   width: "150px",
@@ -234,9 +234,14 @@ export default function Watch(){
                   fontSize: "20px",
                   borderRadius: "8px",
                   marginLeft: "50px",
+                  ":hover": {
+                    backgroundColor: "#8230c6",
+                    border: "2px solid #8230c6",
+                  },
+                  
                 }}
               >
-                <PiShareFat style={{ marginRight: "10px" }} /> Share
+                <PiShareFat style={{ marginRight: "10px", }} /> Share
               </Button>
               <Button
                 sx={{
@@ -249,6 +254,12 @@ export default function Watch(){
                   border: "none",
                   fontSize: "20px",
                   borderRadius: "8px",
+                  cursor:"pointer",
+                  ":hover": {
+                    backgroundColor: "#8230c6",
+                    border: "2px solid #8230c6",
+                  },
+                  
                 }}
                 onClick={() => addRemoveWatchList(itemId._id)}
               >

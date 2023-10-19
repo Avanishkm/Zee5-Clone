@@ -88,6 +88,7 @@ const Movies = () => {
 
   return (
     <>
+    
       <Container style={{ marginTop: "8rem" }}>
         <Container style={{ marginLeft: "40px", marginTop: "40px" }}>
           <Box

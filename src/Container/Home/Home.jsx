@@ -57,7 +57,7 @@ export default function Home() {
           <Container
             style={{
               marginTop: "40px",
-              marginLeft: window.innerWidth < 700 ? "10px" : "40px",
+              marginLeft: window.innerWidth < 500 ? "10px" : "40px",
             }}
           >
             <Flex style={{ justifyContent: "space-between" }}>

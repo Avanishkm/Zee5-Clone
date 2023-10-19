@@ -90,14 +90,18 @@ export default function Watchlist() {
         <hr style={{color:"white"}}/>
         <Grid templateColumns="repeat(2, 1fr)"  width="55rem" height="auto">
           {watchlist.map((item) => (
+            
           <Box style={{margin:"10px", padding:"20px", display:"flex",flexDirection:"column", alignItem:"flex-start", height:"150px", width:"300px", flexWrap:"wrap"}}>
+
           <Container style={{ maxHeight:"150px", width:"50%", overflow:"hidden"}}>
           <img src={item?.thumbnail} alt="item.title" style={{width:"100%", objectFit:"cover", borderRadius:"8px"}}/>
           </Container>
           <div style={{textAlign:"left", color:"white", paddingLeft:"20px", paddingTop:"50px",width:"50%", height:"40px"}}>{item?.title}</div>
+          
           <Button onClick={() => addRemoveWatchList(item?._id)} style={{top:"-90px", left:"80px", cursor:"pointer", border:"none", backgroundColor:"transparent", color:"white"}}>
             <AiOutlineClose/>
             </Button>
+            
           </Box>
           ))} 
       </Grid>

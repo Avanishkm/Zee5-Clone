@@ -263,7 +263,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                     <ListItem>Movies</ListItem>
                   </NavLink>
 
-                  <ListItem
+                  <ListItem 
                     onClick={(e) => {
                       toggleDropDown();
                     }}

@@ -68,7 +68,7 @@ function ImageSlider() {
                 <img
                   className="large-slider-img"
                   src={smallMovie1}
-                  alt="sirf"
+                  alt="movie11"
                 />
                 <NavLink
                   to="/watch/64cffee700bad552e8dcd533"
