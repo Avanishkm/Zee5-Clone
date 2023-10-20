@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 
-const ProfileItem = () => {
+export default function ProfileItem(){
 
     const ProfileLinkStyle =({ isActive }) => {
         return {
@@ -12,7 +12,7 @@ const ProfileItem = () => {
 
   return (
     <>
-      <div className="profile" style={{fontFamily:"Noto Sans, sans-serif"}}>
+    <div className="profile" style={{fontFamily:"Noto Sans, sans-serif"}}>
     <NavLink to='/Profile' style={ProfileLinkStyle} className="profileItemList">
     <div style={{paddingTop:"30px", paddingLeft:"20px"}}>My Profile</div>
     </NavLink>
@@ -38,4 +38,4 @@ const ProfileItem = () => {
   )
 }
 
-export default ProfileItem
+

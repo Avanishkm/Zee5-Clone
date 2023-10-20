@@ -10,7 +10,7 @@ import VideoSong from "../Container/VideoSong/VideoSong";
 import ShortFilm from "../Container/ShortFilm/ShortFilm";
 import Watch from "../Container/Watch/Watch";
 import WatchList from "../Container/WatchList/WatchList";
-import SearchCard from "../Container/SearchCard/SearchCard";
+// import SearchCard from "../Container/SearchCard/SearchCard";
 import BuyPlan from "../Container/BuyPlan/BuyPlan";
 import Registration from "../Container/Registration/Registration";
 import ZeeExclusive from "../Container/ZeeExclusive/ZeeExclusive";
@@ -27,6 +27,7 @@ import Retail from "../Container/Retail/Retail";
 import Transaction from "../Container/Transaction/Transaction";
 import TermOfUse from "../Container/TermOfUse/TermOfUse";
 import { FetchProvider } from "../FetchContext";
+import Search from "../Container/Search/Search";
 
 const RouterContainer = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -69,7 +70,7 @@ const RouterContainer = () => {
         <Route path="/shortfilm" element={<ShortFilm />} />
         <Route path="/watch/:id" element={<Watch />} />
         <Route path="/WatchList" element={<WatchList />} />
-        <Route path="/result/:id" element={<SearchCard />} />
+        <Route path="/result/:id" element={<Search />} />
         <Route path="/ZeeExclusive" element={<ZeeExclusive />} />
         <Route path="/AllDocumentries" element={<AllDocumentries />} />
         <Route path="/AllDrama" element={<AllDrama />} />
@@ -89,7 +90,7 @@ const RouterContainer = () => {
           element={isLoggedIn ? <Subscription /> : <Navigate />}
         />
         <Route
-          path="/Retail"
+          path="/Rental"
           element={isLoggedIn ? <Retail /> : <Navigate />}
         />
         <Route

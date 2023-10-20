@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import sorryIcon from "../../Assets/sorryIcon.jpg";
+// import sorryIcon from "../../Assets/sorryIcon.jpg";
 import { Link } from "react-router-dom";
 
 const NoResult = () => {
@@ -37,11 +37,12 @@ const NoResult = () => {
               }}
             >
               {" "}
-              SO SORRY ....
-              <img
-                src={sorryIcon}
+              {/* SO SORRY .... */}
+              COMING SOON ....
+              {/* <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyh6PG3NIaOgTmORMljRNYvDstju826WgHkQ&usqp=CAU"
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-              />
+              /> */}
             </h1>
             <h2
               style={{
@@ -82,11 +83,12 @@ const NoResult = () => {
               }}
             >
               {" "}
-              SO SORRY ....
-              <img
+              {/* SO SORRY .... */}
+              COMING SOON ....
+              {/* <img
                 src={sorryIcon}
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-              />
+              /> */}
             </h1>
             <h2
               style={{

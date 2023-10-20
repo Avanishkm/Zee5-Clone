@@ -54,6 +54,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 1000);
 
   const toogleRef = useRef(null);
+  const menuRef = useRef(null);
 
   const navLinkStyle = ({ isActive }) => {
     return {
@@ -84,6 +85,19 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   const clearSearchValue = () => {
     setSearchData("");
   };
+
+ // for menu toggle
+  useEffect(() => {
+    const handleClick = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClick);
+    return () => {
+      document.removeEventListener("click", handleClick);
+    };
+  });
 
   useEffect(() => {
     const handleClickOutside = (event) => {

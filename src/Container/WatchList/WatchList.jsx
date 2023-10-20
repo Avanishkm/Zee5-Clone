@@ -1,7 +1,6 @@
 import { useEffect, useState} from "react";
 import { Container, Box, Button, Flex, Grid} from "@chakra-ui/react";
 import {TbFaceIdError} from 'react-icons/tb';
-
 import {AiOutlineClose} from 'react-icons/ai';
 import ProfileItem from "../ProfileItem/ProfileItem";
 

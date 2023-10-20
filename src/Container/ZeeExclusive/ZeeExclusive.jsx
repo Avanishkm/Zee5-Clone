@@ -3,8 +3,8 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import ComponentCard from "../ComponentCard/ComponentCard";
 
-export default function AllMovies({ handleShown }) {
-  handleShown();
+export default function AllMovies() {
+  
   const [exclusive, SetExclusive] = useState([]);
 
   const getMovies = async () => {

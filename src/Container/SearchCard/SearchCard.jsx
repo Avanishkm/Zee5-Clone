@@ -1,12 +1,9 @@
-import { Container, ListItem, UnorderedList } from "@chakra-ui/react";
-import React from "react";
-import { useEffect } from "react";
-import { useRef } from "react";
-import { useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useState, useRef } from "react";
+import { ListItem, UnorderedList, Container } from "@chakra-ui/react";
 
-const SearchCard = ({searchData, clearSearchValue}) => {
-  
+export default function SearchCard({ searchData, clearSearchValue }) {
   const navigate = useNavigate();
   const [result, setResult] = useState([]);
   const suggestionRef = useRef(null);
@@ -15,12 +12,10 @@ const SearchCard = ({searchData, clearSearchValue}) => {
     const storedData = localStorage.getItem("videoData");
     const getData = JSON.parse(storedData);
     const parseData = getData ? getData.videoData : [];
-    console.log("Parsed data:", parseData);
 
     const movieName = parseData.filter((item) => {
       return item.title?.toLowerCase().includes(searchData?.toLowerCase());
     });
-    console.log("Filtered results:", movieName);
 
     setResult(movieName);
   }, [searchData]);
@@ -34,7 +29,6 @@ const SearchCard = ({searchData, clearSearchValue}) => {
         setResult([]);
       }
     };
-
     document.addEventListener("click", handleClickOutside);
     return () => {
       document.removeEventListener("click", handleClickOutside);
@@ -42,13 +36,13 @@ const SearchCard = ({searchData, clearSearchValue}) => {
   }, []);
 
   const handleSuggestionClick = (selectedItem) => {
-    console.log("Suggestion clicked:", selectedItem);
     navigate(`/result/${selectedItem._id}`);
     clearSearchValue();
     setResult([]);
   };
   return (
     <Container style={{ backgroundColor: "#0F0617" }}>
+      {/* Suggestions Container */}
       {result.length > 0 && (
         <Container
           ref={suggestionRef}
@@ -58,8 +52,7 @@ const SearchCard = ({searchData, clearSearchValue}) => {
             top: "110%",
             left: 0,
             width: "100%",
-            maxHeight: "450px",
-            overflowY: result.length > 5 ? "scroll" : "auto",
+            maxHeight: "500px",
             zIndex: 2,
             cursor: "pointer",
           }}
@@ -81,6 +74,4 @@ const SearchCard = ({searchData, clearSearchValue}) => {
       )}
     </Container>
   );
-};
-
-export default SearchCard;
+}
