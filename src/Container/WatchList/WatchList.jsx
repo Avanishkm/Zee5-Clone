@@ -57,7 +57,7 @@ export default function Watchlist() {
         ? watchlist.filter((item) => item?._id !== showId)
         : [...watchlist, showId];
 
-      setWatchList(updatedWatchlist);
+      setWatchList(updatedWatchlist); 
       setIsAdded(!isAdded);
       }
       
@@ -74,7 +74,7 @@ export default function Watchlist() {
         <Container style={{ width: "20rem", flex: "0 0 10rem"}}>
         <ProfileItem />
           </Container>
-          <Flex style={{flexDirection:"column"}}>
+          <Flex style={{flexDirection:"column"}}> 
       <h1 style={{ color: "white", marginLeft: "50px", height:"50px",width:"30rem"}}>My Watchlist</h1>
     
       <hr className="divider" />
@@ -90,6 +90,7 @@ export default function Watchlist() {
         <hr style={{color:"white"}}/>
         <Grid templateColumns="repeat(2, 1fr)"  width="55rem" height="auto">
           {watchlist.map((item) => (
+
             
           <Box style={{margin:"10px", padding:"20px", display:"flex",flexDirection:"column", alignItem:"flex-start", height:"150px", width:"300px", flexWrap:"wrap"}}>
 
