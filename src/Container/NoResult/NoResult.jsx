@@ -30,15 +30,19 @@ const NoResult = () => {
           >
             <h1
               style={{
+                display:"flex",
+                justifyContent: "center",
                 color: "white",
                 textAlign: "center",
                 paddingTop: "40px",
                 letterSpacing: "2px",
+                
               }}
             >
               {" "}
               {/* SO SORRY .... */}
-              COMING SOON ....
+              Hi, Hope You Are Doing Well. This Feature Is Coming Soon, Stay
+              Tuned!
               {/* <img
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyh6PG3NIaOgTmORMljRNYvDstju826WgHkQ&usqp=CAU"
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
@@ -53,7 +57,7 @@ const NoResult = () => {
               }}
             >
               {" "}
-              This feature is currently unavailable.
+              {/* This feature is currently unavailable. */}
             </h2>
             <Link to="/">
               <h2 style={{ textAlign: "center", paddingTop: "40px" }}>
@@ -77,14 +81,16 @@ const NoResult = () => {
             <h1
               style={{
                 color: "white",
-                marginLeft: "25rem",
-                paddingTop: "40px",
-                letterSpacing: "2px",
+                marginBottom: "30px",
+                marginLeft: "8rem",
+                paddingTop: "100px",
+              
               }}
             >
               {" "}
               {/* SO SORRY .... */}
-              COMING SOON ....
+              Hi, Hope You Are Doing Well. This Feature Is Coming Soon, Stay
+              Tuned!
               {/* <img
                 src={sorryIcon}
                 style={{ width: "50px", height: "50px", borderRadius: "50%" }}
@@ -99,14 +105,14 @@ const NoResult = () => {
               }}
             >
               {" "}
-              This feature is currently unavailable.
+              {/* This feature is currently unavailable. */}
             </h2>
             <Link to="/">
               <h2
                 style={{
                   marginLeft: "10%",
                   marginLeft: "30rem",
-                  paddingTop: "100px",
+                  // paddingTop: "1px",
                 }}
               >
                 Back To Home
