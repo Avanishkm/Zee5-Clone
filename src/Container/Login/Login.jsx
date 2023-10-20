@@ -137,7 +137,7 @@ const Login = ({  setLoggedInStatus, setUserName }) => {
         >
           {error}
         </div>
-        {login ? (
+        {login ? ( 
           <>
             <Link to="/">
               <Button

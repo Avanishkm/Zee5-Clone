@@ -81,7 +81,7 @@ const RouterContainer = () => {
         <Route path="/NoResult" element={<NoResult />} />
         <Route
           path="/Profile"
-          element={isLoggedIn ? <Profile /> : <Navigate />}
+          element={isLoggedIn ? <Profile username="Avanish" email="abc@123gmail.com" /> : <Navigate />}
           username={userName}
           email={Email}
         />
