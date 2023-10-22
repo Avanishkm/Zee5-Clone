@@ -3,9 +3,13 @@ import { Flex } from "@chakra-ui/react";
 import ProfileItem from "../ProfileItem/ProfileItem";
 import Footer from '../../Components/Footer/Footer';
 
+
+
 const Profile = ({ username, email }) => {
+  
   console.log(username);
   console.log(email);
+  
   return (
     <div style={{ marginTop: "7rem" }}>
       <div

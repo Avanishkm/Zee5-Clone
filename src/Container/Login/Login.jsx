@@ -2,9 +2,9 @@ import { Container, Button } from "@chakra-ui/react";
 import React from "react";
 import { CloseIcon } from '@chakra-ui/icons';
 import { useState } from "react";
-import { NavLink, Link, useLocation, json } from "react-router-dom";
+import { NavLink, Link} from "react-router-dom";
 
-const Login = ({  setLoggedInStatus, setUserName }) => {
+const Login = ({  setLoggedInStatus,setEMail, setUserName}) => {
   
   
   const [email, setEmail] = useState("");
@@ -48,15 +48,20 @@ const Login = ({  setLoggedInStatus, setUserName }) => {
               }),
             }
           );
-          const data = await response.json();
-          if (response.ok && data.status === "success") {
-            localStorage.setItem("token", data.token)
-            localStorage.setItem("user",JSON.stringify(data.data))
+          // const data = await response.json();
+          if (response.ok) {   // && data.status === "success"
+            // localStorage.setItem("token", data.token)
+            // localStorage.setItem("user",JSON.stringify(data.data))
+
+            const responseData = await response.json();
+            localStorage.setItem("sign", JSON.stringify({sign: responseData}))
             console.log("registration successfully");
             setError("Login successfully");
             setColor("green");
             setLogin(true);
+            // setUserName(data.data.name);
             setUserName(email);
+            setEMail(email);
             setLoggedInStatus(true);
           } else {
             console.error("Registration Failed");

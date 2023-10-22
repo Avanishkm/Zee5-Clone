@@ -31,6 +31,7 @@ import SearchCard from "../../Container/SearchCard/SearchCard";
 
 export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   console.log(username);
+  
   const searchStyle = {
     bg: "#0F0617",
     color: "white",
@@ -54,7 +55,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 1000);
 
   const toogleRef = useRef(null);
-  const menuRef = useRef(null);
+  // const menuRef = useRef(null);
 
   const navLinkStyle = ({ isActive }) => {
     return {
@@ -63,9 +64,9 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   };
 
   const toggleDropDown = () => {
-    console.log("dropdown clicked");
+    // console.log("dropdown clicked");
     setIsDropDownOpen(!isDropdownOpen);
-    console.log("isDropDown:", isDropdownOpen);
+    // console.log("isDropDown:", isDropdownOpen);
   };
 
   const handleOption = () => {
@@ -74,7 +75,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
 
   const handleMenuToggle = () => {
     setMenuOpen(!menuOpen);
-    console.log("hamburger opened");
+    // console.log("hamburger opened");
   };
 
   const handleLogout = () => {
@@ -87,17 +88,17 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   };
 
  // for menu toggle
-  useEffect(() => {
-    const handleClick = (e) => {
-      if (menuRef.current && !menuRef.current.contains(e.target)) {
-        setMenuOpen(false);
-      }
-    };
-    document.addEventListener("click", handleClick);
-    return () => {
-      document.removeEventListener("click", handleClick);
-    };
-  });
+  // useEffect(() => {
+  //   const handleClick = (e) => {
+  //     if (menuRef.current && !menuRef.current.contains(e.target)) {
+  //       setMenuOpen(false);
+  //     }
+  //   };
+  //   document.addEventListener("click", handleClick);
+  //   return () => {
+  //     document.removeEventListener("click", handleClick);
+  //   };
+  // });
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -110,7 +111,7 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [toogleRef]);
+  });
 
   const handleSearchInputChange = (event) => {
     const userInput = event.target.value;
@@ -127,6 +128,16 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  // if (
+  //   location.pathname === "/Login" ||
+  //   location.pathname === "/BuyPlan" ||
+  //   location.pathname === "/Register"
+  // ) {
+  //   return null;
+
+
+  // }
   
   return (
     <>
