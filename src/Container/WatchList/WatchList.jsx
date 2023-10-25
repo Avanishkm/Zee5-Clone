@@ -54,7 +54,7 @@ export default function Watchlist() {
       if (response.ok){
         const updatedWatchlist = isAdded
         ? watchlist.filter((item) => item?._id !== showId)
-        : [...watchlist];
+        : [...watchlist, showId];
 
       setWatchList(updatedWatchlist); 
       setIsAdded(!isAdded);
