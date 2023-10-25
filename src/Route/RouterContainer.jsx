@@ -27,6 +27,16 @@ import Transaction from "../Container/Transaction/Transaction";
 import TermOfUse from "../Container/TermOfUse/TermOfUse";
 import { FetchProvider } from "../FetchContext";
 import Search from "../Container/Search/Search";
+// import Signup from "../Container/signup/Signup";
+// import LoginPage from "../Container/Login/LoginPage";
+// import PrivateRoute from "../PrivateRoute"
+// import Watchlist from "../Container/myaccount/Watchlist";
+// import MyAccount from "../Container/myaccount/MyAccount";
+// import WatchlistButton from "../Container/WatchList/WatchlistButton";
+
+
+
+
 
 const RouterContainer = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -81,6 +91,9 @@ const RouterContainer = () => {
           <Route path="/AllTrailer" element={<AllTrailer />} />
           <Route path="/AllWebSeries" element={<AllWebSeries />} />
           <Route path="/NoResult" element={<NoResult />} />
+
+
+          
           
 
           {/* <Route
@@ -105,8 +118,8 @@ const RouterContainer = () => {
                 <Navigate />
               )
             }
-            username={userName}
-            email={Email}
+            // username={userName}
+            // email={Email}
           />
 
           <Route

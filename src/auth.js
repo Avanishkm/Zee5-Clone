@@ -3,19 +3,29 @@ const Auth = {
 
     signup: async(user) =>{
         try{
-            const response = await fetch('https://academics.newtonschool.co/api/v1/user/signup', {
-                method: 'POST',
-                headers: {
-                  'projectId': 'f104bi07c490',
-                  'Authorization': 'Bearer 1FtqjSZGiMmlETtyqUNxt26AtGikPe8F',
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  ...user,
-                  appType: 'ott',
-                }),
-              });
-              
+
+          // var raw = JSON.stringify({
+            
+          // });
+          // console.log(raw);
+
+          const response = await fetch(
+            "https://academics.newtonschool.co/api/v1/user/signup",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json", // Set content type to JSON
+                projectId: "f104bi07c490",
+              },
+
+              body: JSON.stringify({
+                ...user,
+                appType: 'ott',
+            
+              })
+            }
+          );
+           
               if (!response.ok) {
                 throw new Error('Signup failed');
               }
@@ -35,9 +45,8 @@ const Auth = {
           const response = await fetch('https://academics.newtonschool.co/api/v1/user/login', {
             method: 'POST',
             headers: {
-              'projectId': 'f104bi07c490',
-              'Authorization': 'Bearer 1FtqjSZGiMmlETtyqUNxt26AtGikPe8F',
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json",
+              projectId: "f104bi07c490",
             },
             body: JSON.stringify({
               ...credentials,

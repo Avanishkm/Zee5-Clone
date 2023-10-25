@@ -10,7 +10,7 @@ import { PiShareFat } from "react-icons/pi";
 export default function Watch(){
   const [itemId, setShowItemId] = useState([]);
   const [isAdded, setIsAdded] = useState(false);
-  
+
   const [smallerScreen, setSmallerScreen] = useState(window.innerWidth < 1000);
 
   const videoRef = useRef(null);
@@ -48,7 +48,7 @@ export default function Watch(){
     const token = localStorage.getItem("token");
     console.log("userData", token);
     if (token) {
-      
+       
       const response = await fetch(
         `https://academics.newtonschool.co/api/v1/ott/watchlist/like`,
         {
@@ -67,6 +67,9 @@ export default function Watch(){
       }
     }
   }
+
+  //
+
 
   useEffect(() => {
     const handleResize = () => {

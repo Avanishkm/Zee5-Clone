@@ -59,6 +59,8 @@ export default function Watchlist() {
       setWatchList(updatedWatchlist); 
       setIsAdded(!isAdded);
       }
+
+      
       
     }
   }
