@@ -79,7 +79,8 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("signupDeatils");
+    localStorage.removeItem("signup");
+    localStorage.removeItem("sign");
     setIsLoggedIn(false);
   };
 

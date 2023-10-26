@@ -27,12 +27,8 @@ import Transaction from "../Container/Transaction/Transaction";
 import TermOfUse from "../Container/TermOfUse/TermOfUse";
 import { FetchProvider } from "../FetchContext";
 import Search from "../Container/Search/Search";
-// import Signup from "../Container/signup/Signup";
-// import LoginPage from "../Container/Login/LoginPage";
-// import PrivateRoute from "../PrivateRoute"
-// import Watchlist from "../Container/myaccount/Watchlist";
-// import MyAccount from "../Container/myaccount/MyAccount";
-// import WatchlistButton from "../Container/WatchList/WatchlistButton";
+
+
 
 
 
@@ -107,7 +103,8 @@ const RouterContainer = () => {
             }
           /> */}
 
-          
+        
+
 
           <Route
             path="/Profile"
@@ -121,6 +118,8 @@ const RouterContainer = () => {
             // username={userName}
             // email={Email}
           />
+
+        
 
           <Route
             path="/Subscription"
