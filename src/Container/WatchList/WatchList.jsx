@@ -10,61 +10,58 @@ export default function Watchlist() {
     const[isAdded, setIsAdded] = useState(true);
    
     async function getWatchList (){
-      const token = localStorage.getItem("token")
-      if (token){
-        
+      const userInfo = localStorage.getItem("sign")
+      if (userInfo){
+        const userDetail = JSON.parse(userInfo);
         const response = await(fetch("https://academics.newtonschool.co/api/v1/ott/watchlist/like",
             {
                 method: 'GET',
                 headers: {
                   Accept: "application/json",
                   "Content-Type": "application/json",
-                  Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${userDetail.sign.token}`,
                     projectId: "f104bi07c490",
                 }
             }))
             
-      console.log("response", response);
-      const data = await response.json();
-      console.log("data i need:", data.data);
-      if (Array.isArray(data?.data?.shows)){
-      setWatchList(data?.data?.shows);
-      setLoading(false)
-      } else {
-        console.error("Data is not an array:", data?.data?.shows);
-      }
-    }
-  }
+            console.log("response", response);
+            const data = await response.json();
+            console.log("data i need:", data.data);
+            if (Array.isArray(data.data?.shows)){
+            setWatchList(data.data?.shows);
+            setLoading(false)
+            } else {
+              console.error("Data is not an array:",data.data.shows );
+            }
+          }
+        }
 
-  async function addRemoveWatchList(showId){
-    const token = localStorage.getItem("token");
-    console.log("userData", token);
-    if(token){
+        async function addRemoveWatchList(showId){
+          const user = localStorage.getItem("sign");
+          console.log("userData", user);
+          if(user){
+            const parsedData = JSON.parse(user);
+           const response= await fetch(`https://academics.newtonschool.co/api/v1/ott/watchlist/like`,{
+                method:"PATCH",
+                headers:{
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${parsedData.sign.token}`,
+                    projectId: "f104bi07c490",
+                  },
+                  body: JSON.stringify({ showId: showId }),
+            });
+            if (response.ok){
+              const updatedWatchlist = isAdded
+              ? watchlist.filter((item) => item._id !== showId)
+              : [...watchlist, showId];
       
-     const response= await fetch(`https://academics.newtonschool.co/api/v1/ott/watchlist/like`,{
-          method:"PATCH",
-          headers:{
-              Accept: "application/json",
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-              projectId: "f104bi07c490",
-            },
-            body: JSON.stringify({ showId: showId }),
-      });
-      if (response.ok){
-        const updatedWatchlist = isAdded
-        ? watchlist.filter((item) => item?._id !== showId)
-        : [...watchlist, showId];
-          
-
-      setWatchList(updatedWatchlist); 
-      setIsAdded(!isAdded);
-      }
-
-      
-      
-    }
-  }
+            setWatchList(updatedWatchlist);
+            setIsAdded(!isAdded);
+            }
+            
+          }
+        }
      useEffect(()=>{
       getWatchList();
      },[])
@@ -76,7 +73,7 @@ export default function Watchlist() {
         <Container style={{ width: "20rem", flex: "0 0 10rem"}}>
         <ProfileItem />
           </Container>
-          <Flex style={{flexDirection:"column"}}> 
+          <Flex style={{flexDirection:"column"}}>
       <h1 style={{ color: "white", marginLeft: "50px", height:"50px",width:"30rem"}}>My Watchlist</h1>
     
       <hr className="divider" />
@@ -92,19 +89,14 @@ export default function Watchlist() {
         <hr style={{color:"white"}}/>
         <Grid templateColumns="repeat(2, 1fr)"  width="55rem" height="auto">
           {watchlist.map((item) => (
-
-            
           <Box style={{margin:"10px", padding:"20px", display:"flex",flexDirection:"column", alignItem:"flex-start", height:"150px", width:"300px", flexWrap:"wrap"}}>
-
           <Container style={{ maxHeight:"150px", width:"50%", overflow:"hidden"}}>
-          <img src={item?.thumbnail} alt="item.title" style={{width:"100%", objectFit:"cover", borderRadius:"8px"}}/>
+          <img src={item.thumbnail} alt="item.title" style={{width:"100%", objectFit:"cover", borderRadius:"8px"}}/>
           </Container>
-          <div style={{textAlign:"left", color:"white", paddingLeft:"20px", paddingTop:"50px",width:"50%", height:"40px"}}>{item?.title}</div>
-          
-          <Button onClick={() => addRemoveWatchList(item?._id)} style={{top:"-90px", left:"80px", cursor:"pointer", border:"none", backgroundColor:"transparent", color:"white"}}>
+          <div style={{textAlign:"left", color:"white", paddingLeft:"20px", paddingTop:"50px",width:"50%", height:"40px"}}>{item.title}</div>
+          <Button onClick={() => addRemoveWatchList(item._id)} style={{top:"-90px", left:"80px", cursor:"pointer", border:"none", backgroundColor:"transparent", color:"white"}}>
             <AiOutlineClose/>
             </Button>
-            
           </Box>
           ))} 
       </Grid>

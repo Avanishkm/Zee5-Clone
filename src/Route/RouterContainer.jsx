@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "../Components/Header/Header";
 import Home from "../Container/Home/Home";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { BrowserRouter as Router , Routes, Route } from "react-router-dom";
 import Movies from "../Container/Movies/Movies";
 import TVSeries from "../Container/TVSeries/TVSeries";
 import Login from "../Container/Login/Login";
@@ -29,47 +29,41 @@ import { FetchProvider } from "../FetchContext";
 import Search from "../Container/Search/Search";
 
 
+function RouterContainer(){
 
-
-
-
-
-const RouterContainer = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userName, setUserName] = useState("");
   const [Email, setEMail] = useState("");
 
 
-  const user = localStorage.getItem("user");
-  console.log("user logged", user);
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setIsLoggedIn(true);
-    }
-  }, []);
+  // const user = localStorage.getItem("user");
+  // console.log("user logged", user);
+  // useEffect(() => {
+  //   const token = localStorage.getItem("token");
+  //   if (token) {
+  //     setIsLoggedIn(true);
+  //   }
+  // }, []);
 
   const setLoggedInStatus = (status) => {
     setIsLoggedIn(status);
   };
 
-  const { pathname } = useLocation();
-  const showHead =
-    pathname.includes("Login") ||
-    pathname.includes("Register") ||
-    pathname.includes("BuyPlan");
+  // const { pathname } = useLocation();
+  // const showHead =
+  //   pathname.includes("Login") ||
+  //   pathname.includes("Register") ||
+  //   pathname.includes("BuyPlan");
 
   return (
     <>
-      <FetchProvider>
-        {!showHead && (
-          <Header
-            isLoggedIn={isLoggedIn}
-            setIsLoggedIn={setIsLoggedIn}
-            username={userName}
-          />
-       )}
-        <Routes>
+
+
+<FetchProvider>
+<Router>
+    
+    <Header isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} username={userName}/>
+   <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/movies" element={<Movies />} />
           <Route path="/TvShows" element={<TVSeries />} />
@@ -87,82 +81,61 @@ const RouterContainer = () => {
           <Route path="/AllTrailer" element={<AllTrailer />} />
           <Route path="/AllWebSeries" element={<AllWebSeries />} />
           <Route path="/NoResult" element={<NoResult />} />
+          <Route path="/Profile" element = {<Profile username={userName} email={Email}/>}/>
+          <Route path="/Subscription" element = {<Subscription />}/>
+          <Route path="/Rental" element = {<Retail />}/>
+              {/* No need to include Nav for /Login and /Register */}
+            
+              
 
-
-          
-          
+        
 
           {/* <Route
-            path="/Profile"
-            element={
-              isLoggedIn ? (
-                <Profile username={userName} email={Email} />
-              ) : (
-                <Navigate to="/Login" />
-              )
-            }
-          /> */}
-
-        
-
-
-          <Route
-            path="/Profile"
-            element={
-              isLoggedIn ? (
-                <Profile username={userName} email={Email} />
-              ) : (
-                <Navigate />
-              )
-            }
-            // username={userName}
-            // email={Email}
-          />
-
-        
-
-          <Route
             path="/Subscription"
             element={isLoggedIn ? <Subscription /> : <Navigate />}
-          />
-          <Route
+          /> */}
+          {/* <Route
             path="/Rental"
             element={isLoggedIn ? <Retail /> : <Navigate />}
-          />
-          <Route
-            path="/Transaction"
-            element={isLoggedIn ? <Transaction /> : <Navigate />}
-          />
-          {/* <Route path="/AboutUs" element={<AboutUs   />} /> */}
-          <Route path="/TermOfUse" element={<TermOfUse />} />
+          /> */}
 
-          {/* protected routes */}
+          <Route path="/transaction" element= {<Transaction />}/>
 
-          <Route
-            path="/Login"
-            element={
-              <Login
-                setLoggedInStatus={setLoggedInStatus}
-                setUserName={setUserName}
-                setEMail={setEMail}
-              />
-            }
-          />
+        {/* <Route
+          path="/Transaction"
+          element={isLoggedIn ? <Transaction /> : <Navigate />}
+        /> */}
+        {/* <Route path="/AboutUs" element={<AboutUs   />} /> */}
+        <Route path="/TermOfUse" element={<TermOfUse />} />
+
+      {/* protected routes */}
+
+        <Route
+          path="/Login"
+          element={
+            <Login
+              setLoggedInStatus={setLoggedInStatus}
+              setUserName={setUserName}
+              setEMail={setEMail}
+            />
+          }
+        />
           <Route
             path="/Register"
             element={
               <Registration
                 setLoggedInStatus={setLoggedInStatus}
-                
                 setUserName={setUserName}
                 setEMail={setEMail}
               />
             }
           />
-          <Route path="/BuyPlan" element={<BuyPlan />} />
+        <Route path="/BuyPlan" element={<BuyPlan />} />
         </Routes>
-      </FetchProvider>
+      </Router>
+    </FetchProvider>
     </>
+      
   );
 };
 

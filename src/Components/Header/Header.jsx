@@ -13,7 +13,7 @@ import {
 
 } from "@chakra-ui/react";
 import { SearchIcon, HamburgerIcon } from "@chakra-ui/icons";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 
 import Zee from "../../Assets/Zee.jpeg";
 import AppsIcon from "@mui/icons-material/Apps";
@@ -44,6 +44,8 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
     
     
   };
+
+  const location = useLocation();
 
   const [isDropdownOpen, setIsDropDownOpen] = useState(false);
   const [option, setIsOption] = useState(false);
@@ -79,7 +81,6 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("signup");
     localStorage.removeItem("sign");
     setIsLoggedIn(false);
   };
@@ -130,15 +131,15 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
     };
   }, []);
 
-  // if (
-  //   location.pathname === "/Login" ||
-  //   location.pathname === "/BuyPlan" ||
-  //   location.pathname === "/Register"
-  // ) {
-  //   return null;
+  if (
+    location.pathname === "/Login" ||
+    location.pathname === "/BuyPlan" ||
+    location.pathname === "/Register"
+  ) {
+    return null;
 
 
-  // }
+  }
   
   return (
     <>

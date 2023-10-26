@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 const FetchContext = createContext();
+
 export default FetchContext;
 
  const FetchProvider = ({children}) =>{
@@ -22,7 +23,7 @@ export default FetchContext;
                     }
                   });
                   const data = await response.json();
-                  // console.log(data);
+                  console.log(data);
                   const result = data.data;
                   setApi(result);
             localStorage.setItem("videoData", JSON.stringify({"videoData": result}))
