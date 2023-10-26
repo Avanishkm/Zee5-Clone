@@ -89,18 +89,6 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
     setSearchData("");
   };
 
- // for menu toggle
-  // useEffect(() => {
-  //   const handleClick = (e) => {
-  //     if (menuRef.current && !menuRef.current.contains(e.target)) {
-  //       setMenuOpen(false);
-  //     }
-  //   };
-  //   document.addEventListener("click", handleClick);
-  //   return () => {
-  //     document.removeEventListener("click", handleClick);
-  //   };
-  // });
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -550,13 +538,32 @@ export default function Header({ isLoggedIn, setIsLoggedIn, username }) {
                                         My Subscription
                                       </li>
                                     </NavLink>
-                                    <li className="profileItem">My Rentals</li>
-                                    <li className="profileItem">
-                                      My Transactions
-                                    </li>
-                                    <li className="profileItem">
+
+                                    <NavLink
+                                      to="/Rental"
+                                      style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <li className="profileItem">
+                                      My Rentals
+                                      </li>
+                                    </NavLink>
+
+                                    <NavLink
+                                      to="/"
+                                      style={{
+                                        textDecoration: "none",
+                                        color: "white",
+                                      }}
+                                    >
+                                      <li className="profileItem">
                                       Manage your devices
-                                    </li>
+                                      </li>
+                                    </NavLink>
+
+                              
                                     <li
                                       onClick={() => handleLogout()}
                                       className="profileItem"

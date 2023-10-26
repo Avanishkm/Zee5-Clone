@@ -31,7 +31,7 @@ export default function Watchlist() {
             setWatchList(data.data?.shows);
             setLoading(false)
             } else {
-              console.error("Data is not an array:",data.data.shows );
+              console.error("Data is not an array:",data?.data?.shows );
             }
           }
         }
@@ -54,7 +54,7 @@ export default function Watchlist() {
             if (response.ok){
               const updatedWatchlist = isAdded
               ? watchlist.filter((item) => item._id !== showId)
-              : [...watchlist, showId];
+              : [...watchlist];
       
             setWatchList(updatedWatchlist);
             setIsAdded(!isAdded);
