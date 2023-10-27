@@ -63,7 +63,7 @@ const[sign, setSign] = useState('')
          setSign(true);
          setUserName(username);
          setEMail(email)
-         setLoggedInStatus(true);
+         setLoggedInStatus(false);
         
        
        }else{
